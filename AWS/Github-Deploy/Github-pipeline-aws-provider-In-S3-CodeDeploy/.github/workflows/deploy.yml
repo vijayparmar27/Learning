@@ -1,0 +1,68 @@
+name: Build and Deploy
+
+on:
+  workflow_dispatch: {}
+
+env:
+  BUCKET_NAME : "typescript-express"
+  AWS_REGION : "ap-south-1"
+  GITHUB_REF: "main"
+
+
+jobs:
+  build:
+    name: Build and Package
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: ${{ secrets.IAMROLE_GITHUB }}
+          role-session-name: GitHub-Action-Role
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
+      - name: Extract commit hash
+        shell: bash
+        run: echo "##[set-output name=commit_hash;]$(echo "$GITHUB_SHA")"
+        id: extract_hash          
+      
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+      - run: npm install
+      # Copy build directory to S3
+      - name:  Copy build to S3
+        run: |
+          zip -r project.zip . -x node_modules\* dist\* .git\*
+          aws s3 cp project.zip s3://typescript-express/code-deploy-3/project.zip
+        
+  deploy:
+    name: Deploy to EC2
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    
+    steps:
+    - uses: actions/checkout@v2
+    - run: |
+        echo "Deploying branch"
+
+    - name: Configure AWS credentials from Test account
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        role-to-assume: ${{ secrets.IAMROLE_GITHUB }}
+        aws-region: ${{ env.AWS_REGION }}
+    - run: |
+        aws deploy create-deployment --application-name node-app --deployment-group-name ec2-app --s3-location bucket=typescript-express,key=code-deploy-3/project.zip,bundleType=zip

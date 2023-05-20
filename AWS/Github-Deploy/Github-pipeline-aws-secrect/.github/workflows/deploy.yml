@@ -1,0 +1,25 @@
+name: EC2 Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy code to EC2 instance
+        uses: appleboy/ssh-action@master
+        with:
+          host: 13.233.130.84
+          username: ec2-user
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd /home/ec2-user/Github-EC2Instance-AWS-Deploy
+            git pull origin main
+            npm install
