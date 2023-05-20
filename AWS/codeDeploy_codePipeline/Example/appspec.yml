@@ -1,0 +1,15 @@
+version: 0.0
+os: linux
+files: 
+  - source: /
+    destination : /home/ec2-user/nodeapp
+    overwrite: true
+hooks:
+   BeforeInstall:
+      - location: scripts/before_install.sh
+        timeout: 3600
+        runas: root
+   ApplicationStart:
+      - location: scripts/application_start.sh
+        timeout: 3600   
+        runas: root     
