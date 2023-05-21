@@ -3,7 +3,9 @@
 
     - install node
 
-    - copy repo using github repo url and hithub token
+    - copy repo using github repo url and github token
+
+        - git clone https://[github_token]@github.com/vijayparmar27/[repo].git
 
 --- in github
 
