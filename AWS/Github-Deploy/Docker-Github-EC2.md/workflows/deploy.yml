@@ -1,0 +1,42 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          repository: vijayparmar27/github-action-test
+          token: ${{ secrets._GITHUB_TOKEN }}
+
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build Docker image
+        run: docker build -t node-app .
+
+      - name: Save Docker image as tar archive
+        run: docker save -o node-app.tar node-app
+
+      - name: Copy Docker image to EC2 instance
+        uses: appleboy/scp-action@master
+        with:
+          host: 3.108.185.123
+          username: ec2-user
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: node-app.tar
+          target: /home/ec2-user
+
+      - name: SSH into EC2 instance
+        uses: appleboy/ssh-action@master
+        with:
+          host: 3.108.185.123
+          username: ec2-user
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            sudo docker load -i /home/ec2-user/node-app.tar
