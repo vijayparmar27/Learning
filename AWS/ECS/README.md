@@ -1,5 +1,3 @@
-
-
 --- create cluster for ecs
 
     - click on create cluster
@@ -23,7 +21,6 @@
         - select SSH key pair
 
     - create cluster
-
 
 --- create Task definitions
 
@@ -58,7 +55,7 @@
         - sg-alb-ecs [give name]
 
         - ABL for ECS SG [Desciption]
-        
+
         - Inbound rules
 
             - 80 : anywhere
@@ -87,7 +84,7 @@
 
         - nginxdemos-hello [Family]
 
-        - nginxdemos [Sservice name] 
+        - nginxdemos [Sservice name]
 
     - Load balancer
 
@@ -115,11 +112,44 @@
 
     - Deploy
 
-
 --- changes
 
     - ALB security group [sg-alb-ecs]
 
     - HTTP : 80 [ALB listeners]
+
+---------------------------------------------
+
+
+--- create cluster
+
+    - select cluster template
+
+        - Networking only
+
+    - give cluster name
+
+    - create new vpc
+
+    - craete
+
+--- create Task Definition
+
+    - select launch type compatibility
+
+        - FARGATE
+
+    - give name
+
+    - select Task role
+
+    - 
+
+
+
+
+
+
+
 
 
