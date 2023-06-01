@@ -179,7 +179,7 @@
 
     -  create new security group
 
-        - 3000 : anywhere
+        - TCP :: 3000 : anywhere
 
     - create service
 
