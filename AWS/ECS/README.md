@@ -153,3 +153,65 @@
 
 
 
+-------------------------------------------------------------
+
+--- create cluster
+
+    - click on create cluster
+
+    - Select cluster template
+
+        - Networking only
+
+    - give cluster name
+
+    - create new VPC
+
+    - create cluster
+
+---- create task Definition
+
+    - click on create new defination 
+
+    - give name for task definition
+
+    - select Task Role [for api calls]
+
+    - operating Linux
+
+    - Add container
+
+        - give constainer name
+
+        - Image [kodekloud/ecs-project1]
+
+        - 3000 [Port mapping] : tcp
+
+    - create task definition
+
+---- In cluster create service
+
+    - click on create
+
+    - Lunch Type
+
+        - AWS fargate
+
+    - Linux [OS]
+
+    - select task defination 
+
+    - give server name
+
+    - Number of tasks [2]
+
+    - select that VPC for created spacific 
+
+    -  create new security group
+
+        - TCP :: 3000 : anywhere
+
+    - create service
+
+--- 
+ 
