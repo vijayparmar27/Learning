@@ -22,7 +22,13 @@
 
         - add staging URL
 
-    - 
+--- giLab Token
+
+    - settings > Repository 
+
+    - give token name [AWS]
+
+    - create token
 
 
 ----------------------------------------------------------------
