@@ -55,7 +55,7 @@ linter:
         - yarn lint
 
 test website:
-    image: alpi ne
+    image: alpine
     stage: test
     rules : 
         - if : $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
@@ -88,7 +88,7 @@ build website:
         - yarn test
         - yarn build
         - echo $APP_VERSION > build/version.html
-    artifacts:
+    artifacts:                                      // save create build in gitlab database for temporary
         paths:
             - build
 
