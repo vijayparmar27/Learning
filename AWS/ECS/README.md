@@ -1,4 +1,4 @@
---- create cluster for ecs
+--- create cluster for ecs [vijayparmar000/node-app:latest]
 
     - click on create cluster
 
