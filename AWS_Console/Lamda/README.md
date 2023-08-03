@@ -1,8 +1,8 @@
---- Lamda Function With ALB(application load balancer)
+--- Lambda Function With ALB(application load balancer)
 
-    - create lamda function
+    - create Lambda function
 
-    - create Load Balancer for Lamda function
+    - create Load Balancer for Lambda function
 
         - click on create load balancer
 
@@ -30,7 +30,7 @@
 
                 - Source [AnyWhere]
 
-            - create security group 
+            - create security group
 
         - select created security group
 
@@ -44,7 +44,7 @@
 
             - click on create target group
 
-        - Listen and routing 
+        - Listen and routing
 
             - Protocol [HTTP]
 
@@ -56,12 +56,12 @@
 
     - GOTO Lambda Function
 
-        - select Monitor 
+        - select Monitor
 
             - view Metrics
 
-            - view Logs 
-        
+            - view Logs
+
         - if you want to enable Multi value header for ALB than
 
             - select Attribute
@@ -83,10 +83,7 @@
 
                 - view policy statements from access policy for lambda function for ALB
 
-
-
 --- Lambda function Asynchonous Invocation Settings
-
 
     - in Lambda function
 
@@ -124,11 +121,9 @@
 
     -  select create queue (SQS)
 
-    - save 
+    - save
 
     - if any asynchonous invocation Lambda function failed given after retry than push in SQS
-
-
 
 --- Lambda function With EventBridge
 
@@ -144,13 +139,13 @@
 
             - select Schedule
 
-            - select Fixed rate every 
+            - select Fixed rate every
 
                 - give timer for cron
 
                 - like [1 MIN]
 
-        - Select target 
+        - Select target
 
             - Target [Lambda Function]
 
@@ -168,11 +163,9 @@
 
         - we can view policy statements for EventBridge
 
-    - this eventBridge call lambda function every 1 minute 
+    - this eventBridge call lambda function every 1 minute
 
     - we can view logs also
-
-
 
 --- Lambda With S3 Notification Service
 
@@ -224,8 +217,7 @@
 
     - this s3 Lambda function trigger is Work on if any Object Put on S3 Bucket
 
-    - this Lambda function trigger 
-
+    - this Lambda function trigger
 
 --- Lambda Event Source Mapping in SQS
 
@@ -237,7 +229,7 @@
 
         - create Queue
 
-    - GOTO lambda function 
+    - GOTO lambda function
 
     - click on Configurations
 
@@ -248,6 +240,7 @@
             - add policy for SQS Lambda
 
                 - AWSLambdaSQSQueueExecutionRole
+
             - add and save
 
         - this role allows to Lambda function to SQS
@@ -264,11 +257,232 @@
 
     - if any message add in SQS than Lambda function triggers
 
+--- Lambda Destinations
+
+    - use this Lambda function [Lambda With S3 Notification Service]
+
+    - GOTO SQS Console
+
+        - create first queue
+
+            - give name [s3-success]
+
+            - create
+
+        - create second queue
+
+            - give name [s3-failure]
+
+    - GOTO Lambda Function Console
+
+        - click on [Add destination]
+
+            - this only working on asynchronous function call like s3 add file
+
+            - Source [Asynchonous invocation]
+
+            - Condition
+
+                - select Destination type [SQS]
+
+                - select Destination [created Queue]
+
+                - also auto add role permission on S3 Bucket
+
+         - click on Configuration
+
+                - click on Destination
+
+                    - view added destinations
 
 
+        - if any one add file on s3 that asynchronously invocation of Lambda function
+
+            - if lambda function fail than that add in fail queue
+
+            - if lambda function success than that add in success queue
+
+--- Lambda Enviroment Variable
+
+    - create new lambda funnction
+
+    - click Condfiguration
+
+        - click on Environment Variable
+
+        - click on edit
+
+            - add variable key and value
+
+    - that added Environment Variable use in Lambda Function
+
+--- Lambda Monitoring XRay Tracing
+
+    - GOTO Lambda Function
+
+    - click on Monitor
+
+        - click on Metrics
+
+            - we can view all metrica
+
+        - click on logs
+
+            - click on redirect Cloud Watch Console
+
+            - we can view all logs in lambda function
+
+        - for on AWSX-Ray
+
+    - click on Configuration
+
+        - click on Monitoring and operations tootls
+
+        - click on edit
+
+            - AWS X-Ray
+
+            - enable Active tracing
+
+            - save
+
+        - click on Permission
+
+            - View Resource Summary
+
+            - we can view AWS X-Ray add
+
+        - we can view AWS X-Ray Console all use lambda function call how many success and how fail also other details
+
+--- Lambda Function in VPC
+
+    - create new lamnda function
+
+    - create new securty group
+
+        - click on Create securty Group
+
+        - give name
+
+        - give description
+
+        - select VPC
 
 
+        - create SG
 
+    - GOTO Lambda Function
 
+        - click on Configuration
 
-        
+        - click on Permission
+
+            - in Execution role add permission for vpc
+
+            - ADD ROLE [AWSLambdaENIManagementAccess]
+
+            - save
+
+        - click on VPC
+
+            - click on edit
+
+            - select VPC
+
+            - select subnets
+
+            - select created Security Group
+
+        -  now can access aws DynamoDB like sevice use in Lambda function
+
+--- Lambda External Dependencies
+
+    - if you want add node js in Lambda function
+
+    - if lambda function is dependencies on node library
+
+    - add code with node_modules folder
+
+    - upload that code
+
+--- Lambda Layers
+
+    - create lambda function
+
+    - click on Layers
+
+    - Add layers
+
+        - select AWS layers
+
+        - select layers
+
+        - save
+
+    - this use from external npm pakages add in lamba function with node_modules folder
+
+--- Lambda Versions and Aliases
+
+    - create Lambda function
+
+    - write lambda function
+
+    - than test that function
+
+    - click on Action
+
+        - click on Publish new version
+
+        - click on publish
+
+    - same change in Lambda function code
+
+    - test add that code
+
+    - click on Action
+
+        - click on Publish new version
+
+        - click on publish
+
+    - click on Versions
+
+        - we can view two versions of app
+
+    - click on Aliases
+
+        - click on create
+
+        - give name [dev]
+
+        - select $latest
+
+        - save
+
+    - click on Aliases
+
+        - we can view alises for app
+
+        - click create new
+
+        - give name [test]
+
+        - select version [2]
+
+        - we can test app version two (100% weight)
+
+    - click on Aliases
+
+        - create aliases
+
+        - give name [prod]
+
+        - select version [1]
+
+        - Weighted alias
+
+            - select version [2]
+
+            - give weight of server
+
+            - save
