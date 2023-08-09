@@ -5,12 +5,17 @@ import {
   updatePartitionKeyIf,
 } from "../interfaces/requestIF";
 import {
+  dynamoDbQueryWithPartitionAndOtherKey,
+  dynamoDbQueryWithPartitionAndSortKey,
+  dynamoDbQueryWithPartitionKey,
+  dynamoDbWithSqlGetQuery,
+  dynamoDbWithSqlInsertQuery,
+  dynamodbBatchInsertQuery,
   fetchAllTableDataFromDynamodb,
   filterTableDataFomDynamoDb,
   getBatchDataWithPartitionFromDynamoDb,
   getDataFromDynamoDB,
   insertMultipleItemsInDynamoDb,
-  newFunction,
   removeSingleRecordFromDynamoDb,
   sendDataToDynamoDB,
   updateInDynamoDb,
@@ -127,7 +132,6 @@ export async function removeRecordFromDynamoDb(req: Request, res: Response) {
 }
 
 // get all table data from DynamoDb
-
 export async function getTableDataFromDynamoDb(req: Request, res: Response) {
   try {
     const data = await fetchAllTableDataFromDynamodb();
@@ -140,7 +144,6 @@ export async function getTableDataFromDynamoDb(req: Request, res: Response) {
   }
 }
 
-
 export async function filterDataFromDynamoDb(req: Request, res: Response) {
   try {
     const data = await filterTableDataFomDynamoDb();
@@ -152,8 +155,6 @@ export async function filterDataFromDynamoDb(req: Request, res: Response) {
     console.log("--- /filterDataFromDynamoDb :: ERROR :: ", error)
   }
 }
-
-
 
 export async function addMultipleDataInDynamoDb(req: Request, res: Response) {
   try {
@@ -191,15 +192,74 @@ export async function getBatchDataWithPartition(req: Request, res: Response) {
   }
 }
 
-
-export async function newFuna(req: Request, res: Response) {
+export async function partiQLGetQueryInDynamoDb(req: Request, res: Response) {
   try {
 
-    const data = await newFunction();
-
+    const data = await dynamoDbWithSqlGetQuery();
 
     res.send(data);
   } catch (error) {
-    console.log("--- ERROR :: ", error)
+    console.log(`--- partiQLInDynamoDb :: ERROR 
+    :: `, error)
+  }
+}
+
+export async function partiQLInsertQueryInDynamoDb(req: Request, res: Response) {
+  try {
+
+    const data = await dynamoDbWithSqlInsertQuery();
+
+    res.send(data);
+  } catch (error) {
+    console.log(`--- partiQLInsertQueryInDynamoDb :: ERROR 
+    :: `, error)
+  }
+}
+
+export async function partiQLInsertBatchQueryInDynamoDb(req: Request, res: Response) {
+  try {
+
+    const data = await dynamodbBatchInsertQuery();
+
+    res.send(data);
+  } catch (error) {
+    console.log(`--- partiQLInsertBatchQueryInDynamoDb :: ERROR 
+    :: `, error)
+  }
+}
+
+export async function queryInDynamoDbWithPartitionKey(req: Request, res: Response) {
+  try {
+
+    const data = await dynamoDbQueryWithPartitionKey();
+
+    res.send(data);
+  } catch (error) {
+    console.log(`--- partiQLInsertBatchQueryInDynamoDb :: ERROR 
+    :: `, error)
+  }
+}
+
+export async function queryInDynamoDbWithPartitionAndSortKey(req: Request, res: Response) {
+  try {
+
+    const data = await dynamoDbQueryWithPartitionAndSortKey();
+
+    res.send(data);
+  } catch (error) {
+    console.log(`--- partiQLInsertBatchQueryInDynamoDb :: ERROR 
+    :: `, error)
+  }
+}
+
+export async function queryInDynamoDbWithPartitionAndOtherKey(req: Request, res: Response) {
+  try {
+
+    const data = await dynamoDbQueryWithPartitionAndOtherKey();
+
+    res.send(data);
+  } catch (error) {
+    console.log(`--- queryInDynamoDbWithPartitionAndOtherKey :: ERROR 
+    :: `, error)
   }
 }

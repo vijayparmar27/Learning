@@ -5,7 +5,8 @@ import {
     getBatchDataWithPartition,
     getDataFromDynamoDb,
     getTableDataFromDynamoDb,
-    newFuna,
+    partiQLGetQueryInDynamoDb,
+    partiQLInsertQueryInDynamoDb,
     removeRecordFromDynamoDb,
     sendDataInDynamoDb,
     updateDataFromDynamoDB,
@@ -28,8 +29,9 @@ router.post("/multiData", addMultipleDataInDynamoDb);
 
 router.post("/updateManyItemsWithPrimaryKey", updateManyItemsWithPrimaryKey);
 router.post("/updateManyItemsWithPrimaryKey", getBatchDataWithPartition);
+router.post("/partiQLInDynamoDb", partiQLGetQueryInDynamoDb);
+router.post("/partiQLInsertQueryInDynamoDb", partiQLInsertQueryInDynamoDb);
 
-router.post("/test", newFuna);
 
 
 export default router;
