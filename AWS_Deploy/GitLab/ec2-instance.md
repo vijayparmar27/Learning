@@ -6,7 +6,7 @@ deploy:
   image:
     name: amazon/aws-cli:2.12.3
     entrypoint: [""]
-  before_script:
+  before_script:c
     - yum update
     - yum install -y openssh-clients
     - mkdir -p ~/.ssh
