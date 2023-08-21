@@ -53,3 +53,18 @@
     [ ] Performance Profiling Tools
     [ ] Machine Learning in Node.js
     [ ] Distributed Tracing
+
+
+[] Advance
+
+    [ ] patten design
+    [ ] system design
+    [ ] link list
+    [ ] parking plote
+    [ ] url sortnar
+    [ ] DATABSE Algorithem
+        [] tree
+        [] graph
+        [] dynamic
+        [] sorting
+
