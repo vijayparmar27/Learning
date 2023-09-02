@@ -15,6 +15,10 @@
 
         - kubectl get deployment (check for deployment)
 
+        - kubectl describe deployment my-nginx
+
+        - kubectl edit deployment my-nginx
+
         - kubectl delete deployment my-nginx (for remove deployment like pod, replicas etc)
 
         - this commands for scaleing
@@ -90,7 +94,9 @@
 
             - kubectl delete service/httpenv-lb deployment/httpenv
 
+        - kubernetes DNS
 
+            - kubectl get namespaces
 
 
 
