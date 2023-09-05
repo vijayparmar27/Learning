@@ -99,4 +99,71 @@
             - kubectl get namespaces
 
 
+--- Management Technique
+
+    - kubectl create deployment sample --image nginx --dry-run -o yaml
+    - kubectl create deployment sample --image nginx --dry-run=client -o yaml
+
+        - --dry-run -o yaml [you can output those templates with]
+
+    - kubectl create job test --image nginx --dry-run -o yaml
+
+    - kubectl expose deployment simple --port 80 --name test --dry-run=client -o yaml
+
+    - kubectl run test --image nginx --dry-run=client -o yaml
+
+    - kubectl run test --image nginx --restart OnFailure --dry-run=client -o yaml
+
+    - kubectl run test --image nginx --restart Never --dry-run=client -o yaml
+
+    - kubectl create cronjob test-cronjob --image=nginx --schedule="*/1 * * * *" --dry-run=client -o yaml
+
+--- Kubernetes YAML
+
+    - kubectl apply -f filename.yaml [for file]
+
+    - kubectl apply -f myYAML/ [for directory]
+
+    - kubectl apply -f https://bret.run/pod.yml 
+
+--- Kubernetes YAML Multiple Config in Single File
+
+- app.yml
+
+        apiVersion: v1
+        kind: Service
+        metadata:
+        name: app-nginx-service
+        spec:
+        type: NodePort
+        ports:
+        - port: 80
+        selector:
+            app: app-nginx
+        ---
+        apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+        name: app-nginx-deployment
+        spec:
+        replicas: 3
+        selector:
+            matchLabels:
+            app: app-nginx
+        template:
+            metadata:
+            labels:
+                app: app-nginx
+                dude: "true"
+            spec:
+            containers:
+            - name: nginx
+                image: nginx:1.17.3
+                ports:
+                - containerPort: 80
+
+    - multiple file separators using [---]
+
+
+
 
