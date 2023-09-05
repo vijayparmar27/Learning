@@ -165,5 +165,56 @@
     - multiple file separators using [---]
 
 
+--- Build Your YAML File
 
+    - kubectl api-resources
 
+    - kubectl api-versions
+
+    - kubectl explain services --recursive
+            
+            |   Name     |  Kind   |
+            ------------------------
+            |  services  | Service |  
+
+        - explain that Kind YAML File
+
+    - kubectl explain services.spec
+
+        - for more information we can use dot routesion
+
+    - kubectl explain services.spec.type
+
+    - kubectl explain deployment.spec.template.spec.volumes.nfs.server
+
+        - for more information we can use dot routesion
+
+    - kubectl apply -f pod.yaml --dry-run 
+
+    - kubectl apply -f pod.yaml --srever-dry-run
+
+    - kubectl diff -f pod.yaml
+
+        - this commands explain changes in yaml file
+
+--- Labels and Lable
+
+    - kubectl describe pod redis
+
+    - kubectl get pod -l run=redis
+
+    - kubectl delete pod -l run=redis
+
+    - kubectl apply -f pod.yaml -l app=redis
+
+    - kubectl get all
+
+    - kubectl delete <resource type>/<resourrce name>
+
+--- extra commands
+
+    - kubectl get namespaces
+
+    - kubectl get all --all-namespaces
+
+    - kubectl config get-contexts
