@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-sc
+  labels:
+    app: myapp-service
+    type: frontend
+spec:
+  type: ClusterIp
+  ports:
+    - targetPort: 80
+      port: 80
+  selector:
+    metchLables:
+      app: myapp
+      type: frontend

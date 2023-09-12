@@ -102,9 +102,41 @@
 
 --- Deployment
 
-    
+    - kubectl create -f deployment.yaml
 
+    - kubectl get deployment myapp
 
+    - kubectl get replicaset
+
+    - kubectl get pods
+
+    - kubectl get all
+
+    - kubectl get describe myapp
+
+    - kubectl describe deployment myapp | grep -i image
+
+--- Deployment Upadet and Roleback
+
+    - kubectl rollout status deployment myapp
+
+    - kubectl rollout history deployment myapp
+
+    - kubectl set image deployment myapp nginx-container=nginx:1.9.1
+
+    - kubectl rollout undo deployment myapp
+
+    - kubectl create -f deployment.yaml --record
+
+--- Services
+
+    --- NodePort
+
+        - kubectl create -f NodePortService.yaml
+
+        - kubectl get services
+
+        - minikube service myapp-sc --url
 
 
 
