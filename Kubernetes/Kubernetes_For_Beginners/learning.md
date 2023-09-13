@@ -138,6 +138,9 @@
 
         - minikube service myapp-sc --url
 
+        - kubectl port-forward svc/myapp-sc 80:8888
+
+
 
 
 

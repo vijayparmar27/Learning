@@ -3,13 +3,12 @@ kind: Service
 metadata:
   name: myapp-sc
   labels:
-    app: myapp-service
+    app: myapp-sc-1
     type: frontend
 spec:
   type: LoadBalancer
   ports:
     - targetPort: 80
-      port: 80
+      port: 8888
   selector:
     app: myapp
-    type: frontend
