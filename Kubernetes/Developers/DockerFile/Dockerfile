@@ -1,3 +1,4 @@
-FROM ubuntu:23.10
+FROM ubuntu:23.103
+USER 1000
 ENTRYPOINT ["sleep"]
 CMD ["5"]

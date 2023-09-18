@@ -172,7 +172,7 @@
 
             envFrom:
                 - configMapRef:
-                name: app-config
+                    name: app-config
 
         - SINGLE ENV
 
@@ -205,6 +205,8 @@
             DB_Password: paswrd
 
         - kubectl create secret generic <secret-name> --from-file=<path-to-file>
+
+        - kubectl get secret app-config -o yaml
 
     --- Declarative
 
@@ -320,7 +322,7 @@
     - 
         apiVersion: v1
         kind: Pod
-            metadata:
+        metadata:
             name: my-kubernetes-dashboard
         spec:
             containers:
@@ -409,6 +411,12 @@
 
     - kubectl taint nodes worker-node1 app=blue:Noschedule
 
+    - kubectl describe node docker-desktop
+
+    - kubectl taint nodes <node-name> <taint-key>:<taint-effect>-
+
+    - kubectl taint nodes docker-desktop app:NoSchedule-
+
     - 
         apiVersion: 
         kind: Pod
@@ -461,14 +469,14 @@
         image: nginx:latest
     affinity:
         nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-             - matchExpressions:
-             - key: environment
-                operator: In
-                values:
-                 - production
-                 - dev
+            requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                - matchExpressions:
+                    - key: environment
+                      operator: In
+                      values:
+                        - production
+                        - dev
 
 
     - 
