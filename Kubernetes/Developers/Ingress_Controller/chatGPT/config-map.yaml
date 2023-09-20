@@ -1,0 +1,9 @@
+# nginx-config-map.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+  namespace: ingress-nginx
+data:
+  proxy-body-size: "50m"
+

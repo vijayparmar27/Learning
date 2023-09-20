@@ -1,0 +1,13 @@
+# default-backend-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: default-http-backend
+  namespace: ingress-nginx
+spec:
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+  selector:
+    app: default-http-backend

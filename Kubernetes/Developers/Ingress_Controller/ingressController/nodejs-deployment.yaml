@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingress-node-app
+  labels:
+    name: ingress-app
+    type: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: ingress-node-pod
+      type: backend
+  template:
+    metadata:
+      name: ingress-node-pod-app
+      labels:
+        name: ingress-node-pod
+        type: backend
+    spec:
+      containers:
+        - name: ingress-app-container
+          image: vijayparmar000/kubenetes-ingress-node-app:1
+          ports:
+            - containerPort: 3000

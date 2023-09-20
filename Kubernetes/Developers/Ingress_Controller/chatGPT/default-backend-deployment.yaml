@@ -1,0 +1,22 @@
+# default-backend-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: default-http-backend
+  namespace: ingress-nginx
+spec:
+  replicas: 1 # You can adjust the number of replicas as needed
+  selector:
+    matchLabels:
+      app: default-http-backend
+  template:
+    metadata:
+      labels:
+        app: default-http-backend
+    spec:
+      containers:
+        - name: default-http-backend
+          image: k8s.gcr.io/defaultbackend-amd64:1.5
+          ports:
+            - name: http
+              containerPort: 8080

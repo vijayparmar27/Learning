@@ -1,0 +1,14 @@
+# ingress-resource.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-ingress
+  namespace: your-namespace # Replace with your namespace
+spec:
+  rules:
+    - host: example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
