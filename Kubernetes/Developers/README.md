@@ -319,7 +319,7 @@
 
     - kubectl describe secret dashboard-sa-token-kbbdm
 
-    - 
+    -
         apiVersion: v1
         kind: Pod
         metadata:
@@ -337,7 +337,7 @@
 
     - kubectl get serviceaccount
 
-    - 
+    -
 
         apiVersion: v1
         kind: Pod
@@ -351,7 +351,7 @@
 
     - kubectl describe pod my-kubernetes-dashboard
 
-    - 
+    -
         apiVersion: v1
         kind: Pod
         metadata:
@@ -364,7 +364,7 @@
 
 --- Resource Requirements
 
-    - 
+    -
         apiVersion: v1
         kind: Pod
         metadata:
@@ -385,14 +385,13 @@
                         memory: “2Gi"
                         cpu: 2
 
-    - 0.1 as 100m 
+    - 0.1 as 100m
 
     - 1m minimum give as a containers requirements
 
+--- Taints And Tolerations
 
---- Taints And Tolerations 
-
-    Taint-Effect : 
+    Taint-Effect :
 
         NoSchedule:
             When a node is tainted with Effect: NoSchedule, it means that new pods will not be scheduled on that node unless they have a corresponding toleration that matches the taint.
@@ -417,8 +416,8 @@
 
     - kubectl taint nodes docker-desktop app:NoSchedule-
 
-    - 
-        apiVersion: 
+    -
+        apiVersion:
         kind: Pod
         metadata:
             name: myapp-pod
@@ -438,15 +437,15 @@
 
     - kubectl run mosquito --image=nginx --restart=Never
 
---- Node Selector 
+--- Node Selector
 
     - kubectl label nodes <node-name> <label-key>=<label-value>
 
     - kubectl label nodes node-1 size=Large
 
-    - 
+    -
 
-        apiVersion: 
+        apiVersion:
         kind: Pod
         metadata:
             name: myapp-pod
@@ -479,7 +478,7 @@
                         - dev
 
 
-    - 
+    -
 
         preferredDuringSchedulingIgnoredDuringExecution:
             - weight: 1
@@ -499,4 +498,462 @@
                         - key: size
                           operator: Exists
 
+--- Readiness
 
+    - for api
+
+        apiVersion: v1
+        kind: Pod
+        metadata:
+            name: readiness-pod
+            labels:
+                app: readiness-pod-app
+        spec:
+            containers:
+                - name: nginx
+                  image: nginx
+                  ports:
+                    - containerPort: 80
+                  readinessProbe:
+                    httpGet:
+                        path: /
+                        port: 80
+
+    - for socket
+
+        readinessProbe:
+            tcpSocket:
+                port: 3306
+
+    - for commands
+
+        readinessProbe:
+            exec:
+                command:
+                    - cat
+                    - /app/is_ready
+
+--- Liveness Probes
+
+     - for api
+
+        apiVersion: v1
+        kind: Pod
+        metadata:
+            name: liveness-pod
+            labels:
+                app: liveness-pod-app
+        spec:
+            containers:
+                - name: nginx
+                  image: nginx
+                  ports:
+                    - containerPort: 80
+                  livenessProbe:
+                    httpGet:
+                        path: /
+                        port: 80
+                    initialDelaySeconds: 5 // delay before starting
+                    periodSeconds: 5       // for every check given time
+                    failureThreshold: 8
+
+    - for socket
+
+        livenessProbe:
+            tcpSocket:
+                port: 3306
+
+    - for commands
+
+        livenessProbe:
+            exec:
+                command:
+                    - cat
+                    - /app/is_ready
+
+--- Container Logs
+
+    - docker run kodekloud/event-simulator
+
+    - docker logs -f <CID>
+
+    -
+
+        apiVersion: v1
+        kind: Pod
+        metadata:
+            name: event-simulator-pod
+        spec:
+            containers:
+            - name: event-simulator
+              image: kodekloud/event-simulator
+            - name: image-processor
+              image: some-image-processor
+
+    - kubectl logs <pod-name> - <container name>
+
+--- Monitoring Kubernetes
+
+    - minikube addons enable metrics-server [for minikube]
+
+    - git clone https://github.com/kubernetes-incubator/metrics-server.git
+
+    - kubectl create –f deploy/1.8+/
+
+    - kubectl top node
+
+    - kubectl top pod
+
+--- Labels, Selectors & Annotations
+
+    - POD lables
+
+        apiVersion: v1
+        kind: Pod
+        metadata:
+            name: simple-webapp
+            labels:
+                app: App1
+                function: Front-end
+        spec:
+            containers:
+             - name: simple-webapp
+               image: simple-webapp
+               ports:
+                - containerPort: 8080
+
+    - ReplicaSet
+
+        apiVersion: apps/v1
+        kind: ReplicaSet
+        metadata:
+            name: simple-webapp
+            labels:
+                app: App1
+                function: Front-end
+        spec:
+            replicas: 3
+            selector:
+                matchLabels:
+                    app: App1
+            template:
+                metadata:
+                    labels:
+                        app: App1
+                        function: Front-end
+                spec:
+                    containers:
+                    - name: simple-webapp
+                      image: simple-webapp
+                      ports:
+                        - containerPort: 8080
+
+    - Service
+
+        apiVersion: v1
+        kind: Service
+        metadata:
+            name: my-service
+        spec:
+            selector:
+                app: App1
+                function: Front-end
+            ports:
+            - protocol: TCP
+              port: 80
+              targetPort: 9376
+
+    - Annotations
+
+        apiVersion: apps/v1
+        kind: ReplicaSet
+        metadata:
+            name: simple-webapp
+            labels:
+                app: App1
+                function: Front-end
+            annotations:
+                buildversion: 1.34
+        spec:
+            replicas: 3
+            selector:
+                matchLabels:
+                    app: App1
+            template:
+                metadata:
+                    labels:
+                        app: App1
+                        function: Front-end
+                spec:
+                    containers:
+                    - name: simple-webapp
+                      image: simple-webapp
+                      ports:
+                        - containerPort: 8080
+
+--- Rolling Updates & Rollbacks
+
+    - kubectl create –f deployment-definition.yml --record
+
+    - kubectl get deployments
+
+    - kubectl get replicaset
+
+    - kubectl get pods
+
+    - kubectl rollout status deployment/myapp-deployment
+
+    - kubectl rollout history deployment/myapp-deployment
+
+    - kubectl rollout undo deployment/myapp-deployment
+
+--- JOBS
+
+    - docker run ubuntu expr 3 + 2
+
+    - 
+
+        apiVersion: v1
+        kind: Pod
+        metadata:
+            name: math-pod  
+        spec:
+            restartPolicy: Never
+            containers:
+                - name: math-add
+                  image: ubuntu
+                  command: ['expr', '3', ‘+', ‘2']
+
+
+    - 
+
+        apiVersion: batch/v1
+        kind: Job
+        metadata: 
+            name:  random-error-job
+        spec: 
+            completions: 3
+            parallelism: 3
+            template:
+                restartPolicy: Never
+                containers:
+                    - name:  random-error
+                      image: kodekloud/random-error
+
+
+    - kubectl get jobs
+
+--- CronJobs
+
+    # ┌───────────── minute (0 - 59)
+    # │ ┌───────────── hour (0 - 23)
+    # │ │ ┌───────────── day of the month (1 - 31)
+    # │ │ │ ┌───────────── month (1 - 12)
+    # │ │ │ │ ┌───────────── day of the week (0 - 6) (Sunday to Saturday;
+    # │ │ │ │ │                                   7 is also Sunday on some systems)
+    # │ │ │ │ │                                   OR sun, mon, tue, wed, thu, fri, sat
+    # │ │ │ │ │
+    # * * * * *
+
+    - 
+
+        apiVersion: batch/v1
+        kind: CronJob
+        metadata:
+        name: hello
+        spec:
+        schedule: "*/1 * * * *"
+        jobTemplate:
+            spec:
+            template:
+                spec:
+                containers:
+                - name: hello
+                    image: busybox:1.28
+                    imagePullPolicy: IfNotPresent
+                    command:
+                        - /bin/sh
+                        - -c
+                        - date; echo Hello from the Kubernetes cluster
+                restartPolicy: OnFailure
+
+--- Volumes
+
+    - 
+        apiVersion: v1
+        kind: Pod
+        metadata:
+            name: random-number-generator
+        spec:
+            containers:
+                - image: alpine
+                  name: alpine
+                  command: ["/bin/sh","-c"]
+                  args: ["shuf -i 0-100 -n 1 >> /opt/number.out;"]
+                  volumeMounts:
+                    - mountPath: /opt
+                      name: data-volume
+            volumes:
+                - name: data-volume
+                  hostPath:
+                    path: /data
+                    type: Directory
+
+--- Persistent Volumes
+
+    - WITH LOCAL
+
+        apiVersion: v1
+        kind: PersistentVolume
+        metadata:
+            name: my-pv
+        spec:
+            capacity:
+                storage: 1Gi
+            accessModes:
+                - ReadWriteOnce
+            hostPath:
+                path: /your/host/path
+
+    - WITH AWS
+
+        apiVersion: v1
+        kind: PersistentVolume
+        metadata:
+        name: aws-pv
+        spec:
+        capacity:
+            storage: 1Gi
+        accessModes:
+            - ReadWriteOnce
+        persistentVolumeReclaimPolicy: Retain
+        awsElasticBlockStore:
+            volumeID: <your-ebs-volume-id>
+            fsType: ext4
+
+    - PODS
+
+        apiVersion: v1
+        kind: Pod
+        metadata:
+        name: my-pod
+        spec:
+        containers:
+            - name: my-container
+              image: my-image:tag
+              volumeMounts:
+                - name: my-volume
+                  mountPath: /path/in/container
+        volumes:
+            - name: my-volume
+              persistentVolumeClaim:
+                claimName: my-pv
+
+--- Persistent Volume Claims
+
+    - PERSISTENT VOLUME
+
+        apiVersion: v1
+        kind: PersistentVolume
+        metadata:
+            name: pv-log
+        spec: 
+            capacity:
+                storage: 100Mi
+            accessModes:
+                - ReadWriteMany
+            hostPath:
+                path: /pv/log
+
+    - PESISTENT VOLUME CLAIMS
+
+        apiVersion: v1
+        kind: PersistentVolumeClaim
+        metadata:
+            name: claim-log-1
+        spec:
+            accessModes:
+                - ReadWriteMany
+            resources:
+                requests:
+                    storage: 50Mi
+
+    - WITH POD
+
+        apiVersion: v1
+        kind: Pod
+        metadata:
+            name: my-pod
+        spec:
+            containers:
+                - name: my-container
+                image: my-image:tag
+                volumeMounts:
+                    - name: my-volume
+                    mountPath: /path/in/container
+            volumes:
+                - name: my-volume
+                  persistentVolumeClaim:
+                    claimName: claim-log-1
+
+--- Storage Classes
+
+    - gcloud beta compute disks create --size 1GB --region us-east-1 pd-disk
+
+    - 
+
+        apiVersion: v1
+        kind: PersistenVolume
+        metadata:
+            name: pv-vol1
+        spec:
+            accessModes:
+                - ReadWriteOnce
+            capacity:
+                storage: 50Mi
+            gpcPersistentDisk:
+                pdName: pd-disk
+                fsType: ext4
+
+    - StorageClass
+
+        apiVersion: storage.k8s.io/v1
+        kind: StorageClass
+        metadata:
+            name: standard
+        provisioner: your-storage-provisioner
+        parameters:
+            type: pd-standard
+        reclaimPolicy: Delete
+
+    -  PersistentVolumeClaim
+
+        apiVersion: v1
+        kind: PersistentVolumeClaim
+        metadata:
+        name: my-pvc
+        spec:
+        accessModes:
+            - ReadWriteOnce
+        storageClassName: standard
+        resources:
+            requests:
+            storage: 5Gi
+
+    -   PODS
+    
+        apiVersion: v1
+        kind: Pod
+        metadata:
+        name: my-pod
+        spec:
+        containers:
+            - name: my-container
+            image: nginx
+            volumeMounts:
+                - name: my-volume
+                mountPath: /data
+        volumes:
+            - name: my-volume
+              persistentVolumeClaim:
+                claimName: my-pvc
