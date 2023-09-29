@@ -54,6 +54,8 @@
 
             - apt-get install containerd.io
 
+            - systemctl restart containerd
+
             - systemctl status containerd
 
         - ps -p 1 
@@ -90,7 +92,13 @@
 
     - Creating a cluster with kubeadm
 
+        - sudo swapoff -a
+
+        - sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+
         - kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=<ip-address>
+
+        - kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=<ip-address>
 
         - ip add
 
@@ -102,6 +110,41 @@
 
     - https://www.weave.works/docs/net/latest/kubernetes/kube-addon/
 
+    - kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
+
     - kubectl get pod -A
 
-    - 
+    - kubectl get ds -A
+
+    - kubectl edit ds weave-net -n kube-system
+
+    - find container name is weave and add new env varible
+
+        - name: IPALLOC_RANGE
+          value: 10.244.0.0/16
+
+    - kubectl get pod -A
+
+    - pkill kubelet
+
+    - sudo systemctl restart kubelet
+
+    - export KUBECONFIG=/etc/kubernetes/kubelet.conf
+
+
+    kubeadm reset
+    systemctl enable firewalld|
+    systemctl start firewalld|
+    firewall-cmd --permanent --add-port=6443/tcp|
+    firewall-cmd --permanent --add-port=2379-2380/tcp|
+    firewall-cmd --permanent --add-port=10250-10255/tcp|
+    firewall-cmd –reload
+
+    env | grep -i kube
+KUBECONFIG=/root/.kube/config
+
+ - strace -eopenat kubectl version
+
+    sudo -i
+
+    
