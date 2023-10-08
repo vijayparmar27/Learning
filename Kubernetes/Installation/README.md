@@ -141,9 +141,9 @@
     firewall-cmd –reload
 
     env | grep -i kube
-KUBECONFIG=/root/.kube/config
+    KUBECONFIG=/root/.kube/config
 
- - strace -eopenat kubectl version
+    - strace -eopenat kubectl version
 
     sudo -i
 
@@ -154,3 +154,21 @@ cd /var/log/pods/kube-system_kube-apiserver-ip-172-31-35-13_0203738862508cdb8eb2
 
 journalctl -xeu kubelet
     
+    sudo apt install golang
+
+    sudo nano /etc/hostname
+    systemctl status cri-docker.socket
+
+    kubectl get pods | grep Evicted | awk '{print $1}' | xargs kubectl delete pod
+
+    kubectl get pod -A | grep Evicted | awk '{print $2 " --namespace=" $1}' | xargs -n 2 kubectl delete pod
+
+    df -h
+
+    docker system prune -a
+
+    docker system prune -a --volumes
+
+    systemctl restart kubelet
+
+    kubectl get nodes
