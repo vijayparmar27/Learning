@@ -820,7 +820,7 @@
         apiVersion: v1
         kind: PersistentVolume
         metadata:
-        name: aws-pv
+            name: aws-pv
         spec:
         capacity:
             storage: 1Gi

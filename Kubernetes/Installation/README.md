@@ -98,7 +98,7 @@
 
         - kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=<ip-address>
 
-        - kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=<ip-address>
+        - kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=172.31.37.198
 
         - ip add
 
@@ -128,7 +128,7 @@
     - pkill kubelet
 
     - sudo systemctl restart kubelet
-
+    
     - export KUBECONFIG=/etc/kubernetes/kubelet.conf
 
 
@@ -147,4 +147,10 @@ KUBECONFIG=/root/.kube/config
 
     sudo -i
 
+systemctl daemon-reload
+systemctl restart kubelet
+
+cd /var/log/pods/kube-system_kube-apiserver-ip-172-31-35-13_0203738862508cdb8eb2784e3924328a/kube-apiserver
+
+journalctl -xeu kubelet
     
