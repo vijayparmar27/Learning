@@ -1,233 +1,272 @@
 [
-    {
-        "name": "John Smith",
-        "age": 32,
-        "email": "john.smith@example.com",
-        "address": {
-          "street": "123 Elm Street",
-          "city": "Columbus",
-          "state": "OH",
-          "zipcode": "12345"
-        },
-        "hobbies": ["reading", "painting", "swimming"],
-        "friends": [
-          {
-            "name": "Emily",
-            "age": 28
-          },
-          {
-            "name": "David",
-            "age": 30
-          }
-        ],
-        "isActive": true
+  {
+    "name": "John Smith",
+    "age": 32,
+    "email": "john.smith@example.com",
+    "address": {
+      "street": "123 Elm Street",
+      "city": "Columbus",
+      "state": "OH",
+      "zipcode": "12345"
+    },
+    "hobbies": [
+      "reading",
+      "painting",
+      "swimming"
+    ],
+    "friends": [
+      {
+        "name": "Emily",
+        "age": 28
       },
       {
-        "name": "Alice Brown",
-        "age": 32,
-        "email": "alice.brown@example.com",
-        "address": {
-          "street": "456 Maple Lane",
-          "city": "Seattle",
-          "state": "OH",
-          "zipcode": "54321"
-        },
-        "hobbies": ["cooking", "traveling", "painting"],
-        "friends": [
-          {
-            "name": "Jessica",
-            "age": 27
-          },
-          {
-            "name": "Daniel",
-            "age": 29
-          }
-        ],
-        "isActive": true
-      },
-      {
-        "name": "James Wilson",
-        "age": 35,
-        "email": "james.wilson@example.com",
-        "address": {
-          "street": "567 Pine Street",
-          "city": "Denver",
-          "state": "CO",
-          "zipcode": "98765"
-        },
-        "hobbies": ["hiking", "cooking", "gardening"],
-        "friends": [
-          {
-            "name": "Jennifer",
-            "age": 33
-          },
-          {
-            "name": "Robert",
-            "age": 36
-          }
-        ],
-        "isActive": true
-      },
-      {
-        "name": "Megan Davis",
-        "age": 29,
-        "email": "megan.davis@example.com",
-        "address": {
-          "street": "789 Cedar Avenue",
-          "city": "Portland",
-          "state": "OR",
-          "zipcode": "45678"
-        },
-        "hobbies": ["biking", "reading", "yoga"],
-        "friends": [
-          {
-            "name": "Christopher",
-            "age": 28
-          },
-          {
-            "name": "Sophia",
-            "age": 30
-          }
-        ],
-        "isActive": true
-      },
-      {
-        "name": "Robert Johnson",
-        "age": 31,
-        "email": "robert.johnson@example.com",
-        "address": {
-          "street": "101 Pine Avenue",
-          "city": "Austin",
-          "state": "TX",
-          "zipcode": "23456"
-        },
-        "hobbies": ["surfing", "cooking", "photography"],
-        "friends": [
-          {
-            "name": "Linda",
-            "age": 29
-          },
-          {
-            "name": "William",
-            "age": 32
-          }
-        ],
-        "isActive": true
-      },
-      {
-        "name": "Emily Taylor",
-        "age": 26,
-        "email": "emily.taylor@example.com",
-        "address": {
-          "street": "222 Oak Lane",
-          "city": "Los Angeles",
-          "state": "CA",
-          "zipcode": "34567"
-        },
-        "hobbies": ["painting", "yoga", "traveling"],
-        "friends": [
-          {
-            "name": "Michael",
-            "age": 28
-          },
-          {
-            "name": "Olivia",
-            "age": 25
-          }
-        ],
-        "isActive": true
-      },
-      {
-        "name": "David Clark",
-        "age": 33,
-        "email": "david.clark@example.com",
-        "address": {
-          "street": "333 Maple Avenue",
-          "city": "San Francisco",
-          "state": "CA",
-          "zipcode": "56789"
-        },
-        "hobbies": ["hiking", "photography", "swimming"],
-        "friends": [
-          {
-            "name": "Elizabeth",
-            "age": 31
-          },
-          {
-            "name": "Matthew",
-            "age": 34
-          }
-        ],
-        "isActive": true
-      },
-      {
-        "name": "Jennifer White",
-        "age": 30,
-        "email": "jennifer.white@example.com",
-        "address": {
-          "street": "444 Cedar Lane",
-          "city": "Chicago",
-          "state": "IL",
-          "zipcode": "76543"
-        },
-        "hobbies": ["reading", "gardening", "cooking"],
-        "friends": [
-          {
-            "name": "John",
-            "age": 32
-          },
-          {
-            "name": "Samantha",
-            "age": 29
-          }
-        ],
-        "isActive": true
-      },
-      {
-        "name": "Daniel Harris",
-        "age": 28,
-        "email": "daniel.harris@example.com",
-        "address": {
-          "street": "555 Elm Lane",
-          "city": "New York",
-          "state": "NY",
-          "zipcode": "65432"
-        },
-        "hobbies": ["swimming", "reading", "painting"],
-        "friends": [
-          {
-            "name": "Mary",
-            "age": 27
-          },
-          {
-            "name": "Joseph",
-            "age": 30
-          }
-        ],
-        "isActive": true
-      },
-      {
-        "name": "Sophia Miller",
-        "age": 32,
-        "email": "sophia.miller@example.com",
-        "address": {
-          "street": "777 Pine Avenue",
-          "city": "Miami",
-          "state": "FL",
-          "zipcode": "54321"
-        },
-        "hobbies": ["yoga", "traveling", "cooking"],
-        "friends": [
-          {
-            "name": "James",
-            "age": 29
-          },
-          {
-            "name": "Emma",
-            "age": 26
-          }
-        ],
-        "isActive": true
+        "name": "David",
+        "age": 30
       }
-      
+    ],
+    "isActive": true
+  },
+  {
+    "name": "Alice Brown",
+    "age": 32,
+    "email": "alice.brown@example.com",
+    "address": {
+      "street": "456 Maple Lane",
+      "city": "Seattle",
+      "state": "OH",
+      "zipcode": "54321"
+    },
+    "hobbies": [
+      "cooking",
+      "traveling",
+      "painting"
+    ],
+    "friends": [
+      {
+        "name": "Jessica",
+        "age": 27
+      },
+      {
+        "name": "Daniel",
+        "age": 29
+      }
+    ],
+    "isActive": true
+  },
+  {
+    "name": "James Wilson",
+    "age": 35,
+    "email": "james.wilson@example.com",
+    "address": {
+      "street": "567 Pine Street",
+      "city": "Denver",
+      "state": "CO",
+      "zipcode": "98765"
+    },
+    "hobbies": [
+      "hiking",
+      "cooking",
+      "gardening"
+    ],
+    "friends": [
+      {
+        "name": "Jennifer",
+        "age": 33
+      },
+      {
+        "name": "Robert",
+        "age": 36
+      }
+    ],
+    "isActive": true
+  },
+  {
+    "name": "Megan Davis",
+    "age": 29,
+    "email": "megan.davis@example.com",
+    "address": {
+      "street": "789 Cedar Avenue",
+      "city": "Portland",
+      "state": "OR",
+      "zipcode": "45678"
+    },
+    "hobbies": [
+      "biking",
+      "reading",
+      "yoga"
+    ],
+    "friends": [
+      {
+        "name": "Christopher",
+        "age": 28
+      },
+      {
+        "name": "Sophia",
+        "age": 30
+      }
+    ],
+    "isActive": true
+  },
+  {
+    "name": "Robert Johnson",
+    "age": 31,
+    "email": "robert.johnson@example.com",
+    "address": {
+      "street": "101 Pine Avenue",
+      "city": "Austin",
+      "state": "TX",
+      "zipcode": "23456"
+    },
+    "hobbies": [
+      "surfing",
+      "cooking",
+      "photography"
+    ],
+    "friends": [
+      {
+        "name": "Linda",
+        "age": 29
+      },
+      {
+        "name": "William",
+        "age": 32
+      }
+    ],
+    "isActive": true
+  },
+  {
+    "name": "Emily Taylor",
+    "age": 26,
+    "email": "emily.taylor@example.com",
+    "address": {
+      "street": "222 Oak Lane",
+      "city": "Los Angeles",
+      "state": "CA",
+      "zipcode": "34567"
+    },
+    "hobbies": [
+      "painting",
+      "yoga",
+      "traveling"
+    ],
+    "friends": [
+      {
+        "name": "Michael",
+        "age": 28
+      },
+      {
+        "name": "Olivia",
+        "age": 25
+      }
+    ],
+    "isActive": true
+  },
+  {
+    "name": "David Clark",
+    "age": 33,
+    "email": "david.clark@example.com",
+    "address": {
+      "street": "333 Maple Avenue",
+      "city": "San Francisco",
+      "state": "CA",
+      "zipcode": "56789"
+    },
+    "hobbies": [
+      "hiking",
+      "photography",
+      "swimming"
+    ],
+    "friends": [
+      {
+        "name": "Elizabeth",
+        "age": 31
+      },
+      {
+        "name": "Matthew",
+        "age": 34
+      }
+    ],
+    "isActive": true
+  },
+  {
+    "name": "Jennifer White",
+    "age": 30,
+    "email": "jennifer.white@example.com",
+    "address": {
+      "street": "444 Cedar Lane",
+      "city": "Chicago",
+      "state": "IL",
+      "zipcode": "76543"
+    },
+    "hobbies": [
+      "reading",
+      "gardening",
+      "cooking"
+    ],
+    "friends": [
+      {
+        "name": "John",
+        "age": 32
+      },
+      {
+        "name": "Samantha",
+        "age": 29
+      }
+    ],
+    "isActive": true
+  },
+  {
+    "name": "Daniel Harris",
+    "age": 28,
+    "email": "daniel.harris@example.com",
+    "address": {
+      "street": "555 Elm Lane",
+      "city": "New York",
+      "state": "NY",
+      "zipcode": "65432"
+    },
+    "hobbies": [
+      "swimming",
+      "reading",
+      "painting"
+    ],
+    "friends": [
+      {
+        "name": "Mary",
+        "age": 27
+      },
+      {
+        "name": "Joseph",
+        "age": 30
+      }
+    ],
+    "isActive": true
+  },
+  {
+    "name": "Sophia Miller",
+    "age": 32,
+    "email": "sophia.miller@example.com",
+    "address": {
+      "street": "777 Pine Avenue",
+      "city": "Miami",
+      "state": "FL",
+      "zipcode": "54321"
+    },
+    "hobbies": [
+      "yoga",
+      "traveling",
+      "cooking"
+    ],
+    "friends": [
+      {
+        "name": "James",
+        "age": 29
+      },
+      {
+        "name": "Emma",
+        "age": 26
+      }
+    ],
+    "isActive": true
+  }
 ]
