@@ -1,19 +1,20 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: random-number-generator
+  name: new
 spec:
-  containers:
-  - image: alpine
-    name: alpine
-    command: ["/bin/sh","-c"]
-    args: ["shuf -i 0-100 -n 1 >> /opt/number.out;"]
-    volumeMounts:
-    - mountPath: /opt
-      name: data-volume
-      
   volumes:
-  - name: data-volume
-    hostPath:
-      path: /data
-      type: Directory
+    - name: data-volume
+      hostPath:
+        path: /c/Users/PARTH/OneDrive/Desktop/New_folder/data
+        type: Directory
+  containers:
+    - image: ubuntu:23.10
+      name: ubuntu
+      command: ["/bin/sh", "-c"]
+      args: 
+        - echo 'hello' > /c/Users/PARTH/OneDrive/Desktop/New_folder/data/opt/t.txt
+      volumeMounts:
+        - mountPath: /c/Users/PARTH/OneDrive/Desktop/New_folder/data/opt
+          name: data-volume
+  
