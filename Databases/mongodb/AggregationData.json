@@ -1,0 +1,461 @@
+[
+    {
+        "id": 1,
+        "name": "Student 1",
+        "age": 20,
+        "grade": "A",
+        "number_of_courses": 2,
+        "courses": [
+            {
+                "courseName": "Math",
+                "grade": "A"
+            },
+            {
+                "courseName": "Science",
+                "grade": "B"
+            }
+        ],
+        "hobbies": [
+            "Soccer",
+            "Painting",
+            "Reading"
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Student 2",
+        "age": 20,
+        "grade": "C",
+        "number_of_courses": 3,
+        "courses": [
+            {
+                "courseName": "History",
+                "grade": "C"
+            },
+            {
+                "courseName": "English",
+                "grade": "A"
+            },
+            {
+                "courseName": "Art",
+                "grade": "A"
+            }
+        ],
+        "hobbies": [
+            "Basketball",
+            "Gardening",
+            "Cooking"
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Student 3",
+        "age": 18,
+        "grade": "C",
+        "number_of_courses": 1,
+        "courses": [
+            {
+                "courseName": "Music",
+                "grade": "B"
+            }
+        ],
+        "hobbies": [
+            "Swimming",
+            "Singing"
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Student 4",
+        "age": 22,
+        "grade": "C",
+        "number_of_courses": 2,
+        "courses": [
+            {
+                "courseName": "Chemistry",
+                "grade": "D"
+            },
+            {
+                "courseName": "Physics",
+                "grade": "B"
+            }
+        ],
+        "hobbies": [
+            "Soccer",
+            "Gaming",
+            "Camping"
+        ]
+    },
+    {
+        "id": 5,
+        "name": "Student 5",
+        "age": 19,
+        "grade": "A",
+        "number_of_courses": 4,
+        "courses": [
+            {
+                "courseName": "Geography",
+                "grade": "A"
+            },
+            {
+                "courseName": "Biology",
+                "grade": "B"
+            },
+            {
+                "courseName": "Psychology",
+                "grade": "A"
+            },
+            {
+                "courseName": "Spanish",
+                "grade": "A"
+            }
+        ],
+        "hobbies": [
+            "Reading",
+            "Painting",
+            "Dancing"
+        ]
+    },
+    {
+        "id": 6,
+        "name": "Student 6",
+        "age": 21,
+        "grade": "C",
+        "number_of_courses": 3,
+        "courses": [
+            {
+                "courseName": "Computer Science",
+                "grade": "A"
+            },
+            {
+                "courseName": "Economics",
+                "grade": "B"
+            },
+            {
+                "courseName": "Physical Education",
+                "grade": "C"
+            }
+        ],
+        "hobbies": [
+            "Basketball",
+            "Cooking"
+        ]
+    },
+    {
+        "id": 7,
+        "name": "Student 7",
+        "age": 20,
+        "grade": "C",
+        "number_of_courses": 2,
+        "courses": [
+            {
+                "courseName": "History",
+                "grade": "B"
+            },
+            {
+                "courseName": "English",
+                "grade": "A"
+            }
+        ],
+        "hobbies": [
+            "Soccer",
+            "Gaming"
+        ]
+    },
+    {
+        "id": 8,
+        "name": "Student 8",
+        "age": 19,
+        "grade": "C",
+        "number_of_courses": 1,
+        "courses": [
+            {
+                "courseName": "Art",
+                "grade": "C"
+            }
+        ],
+        "hobbies": [
+            "Reading",
+            "Singing"
+        ]
+    },
+    {
+        "id": 9,
+        "name": "Student 9",
+        "age": 21,
+        "grade": "A",
+        "number_of_courses": 3,
+        "courses": [
+            {
+                "courseName": "Physics",
+                "grade": "A"
+            },
+            {
+                "courseName": "Chemistry",
+                "grade": "B"
+            },
+            {
+                "courseName": "Math",
+                "grade": "A"
+            }
+        ],
+        "hobbies": [
+            "Painting",
+            "Soccer",
+            "Swimming"
+        ]
+    },
+    {
+        "id": 10,
+        "name": "Student 10",
+        "age": 20,
+        "grade": "B",
+        "number_of_courses": 2,
+        "courses": [
+            {
+                "courseName": "Biology",
+                "grade": "C"
+            },
+            {
+                "courseName": "Geography",
+                "grade": "A"
+            }
+        ],
+        "hobbies": [
+            "Dancing",
+            "Gardening"
+        ]
+    },
+    {
+        "id": 11,
+        "name": "Student 11",
+        "age": 20,
+        "grade": "C",
+        "number_of_courses": 1,
+        "courses": [
+            {
+                "courseName": "Physical Education",
+                "grade": "C"
+            }
+        ],
+        "hobbies": [
+            "Basketball",
+            "Gaming"
+        ]
+    },
+    {
+        "id": 12,
+        "name": "Student 12",
+        "age": 19,
+        "grade": "A",
+        "number_of_courses": 4,
+        "courses": [
+            {
+                "courseName": "Spanish",
+                "grade": "A"
+            },
+            {
+                "courseName": "Psychology",
+                "grade": "B"
+            },
+            {
+                "courseName": "Economics",
+                "grade": "A"
+            },
+            {
+                "courseName": "Computer Science",
+                "grade": "A"
+            }
+        ],
+        "hobbies": [
+            "Cooking",
+            "Reading",
+            "Singing"
+        ]
+    },
+    {
+        "id": 13,
+        "name": "Student 13",
+        "age": 21,
+        "grade": "B",
+        "number_of_courses": 2,
+        "courses": [
+            {
+                "courseName": "English",
+                "grade": "B"
+            },
+            {
+                "courseName": "History",
+                "grade": "A"
+            }
+        ],
+        "hobbies": [
+            "Soccer",
+            "Camping"
+        ]
+    },
+    {
+        "id": 14,
+        "name": "Student 14",
+        "age": 18,
+        "grade": "A",
+        "number_of_courses": 3,
+        "courses": [
+            {
+                "courseName": "Music",
+                "grade": "A"
+            },
+            {
+                "courseName": "Art",
+                "grade": "B"
+            },
+            {
+                "courseName": "History",
+                "grade": "A"
+            }
+        ],
+        "hobbies": [
+            "Painting",
+            "Swimming",
+            "Gaming"
+        ]
+    },
+    {
+        "id": 15,
+        "name": "Student 15",
+        "age": 22,
+        "grade": "B",
+        "number_of_courses": 2,
+        "courses": [
+            {
+                "courseName": "Chemistry",
+                "grade": "D"
+            },
+            {
+                "courseName": "Physics",
+                "grade": "B"
+            }
+        ],
+        "hobbies": [
+            "Soccer",
+            "Gaming",
+            "Camping"
+        ]
+    },
+    {
+        "id": 16,
+        "name": "Student 16",
+        "age": 19,
+        "grade": "A",
+        "number_of_courses": 3,
+        "courses": [
+            {
+                "courseName": "Math",
+                "grade": "A"
+            },
+            {
+                "courseName": "Science",
+                "grade": "A"
+            },
+            {
+                "courseName": "Chemistry",
+                "grade": "A"
+            }
+        ],
+        "hobbies": [
+            "Reading",
+            "Painting",
+            "Basketball"
+        ]
+    },
+    {
+        "id": 17,
+        "name": "Student 17",
+        "age": 20,
+        "grade": "B",
+        "number_of_courses": 2,
+        "courses": [
+            {
+                "courseName": "English",
+                "grade": "B"
+            },
+            {
+                "courseName": "History",
+                "grade": "A"
+            }
+        ],
+        "hobbies": [
+            "Soccer",
+            "Reading"
+        ]
+    },
+    {
+        "id": 18,
+        "name": "Student 18",
+        "age": 21,
+        "grade": "C",
+        "number_of_courses": 1,
+        "courses": [
+            {
+                "courseName": "Physical Education",
+                "grade": "C"
+            }
+        ],
+        "hobbies": [
+            "Gardening",
+            "Cooking"
+        ]
+    },
+    {
+        "id": 19,
+        "name": "Student 19",
+        "age": 22,
+        "grade": "B",
+        "number_of_courses": 4,
+        "courses": [
+            {
+                "courseName": "Geography",
+                "grade": "B"
+            },
+            {
+                "courseName": "Biology",
+                "grade": "B"
+            },
+            {
+                "courseName": "Economics",
+                "grade": "A"
+            },
+            {
+                "courseName": "Music",
+                "grade": "A"
+            }
+        ],
+        "hobbies": [
+            "Dancing",
+            "Singing",
+            "Swimming"
+        ]
+    },
+    {
+        "id": 20,
+        "name": "Student 20",
+        "age": 20,
+        "grade": "A",
+        "number_of_courses": 2,
+        "courses": [
+            {
+                "courseName": "Science",
+                "grade": "A"
+            },
+            {
+                "courseName": "Math",
+                "grade": "A"
+            }
+        ],
+        "hobbies": [
+            "Soccer",
+            "Painting",
+            "Reading"
+        ]
+    }
+]

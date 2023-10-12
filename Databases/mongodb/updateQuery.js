@@ -174,4 +174,201 @@ db.collection.update({
         "$set": {
             "hobbies.$": "anime"
         }
-    })
+    });
+
+// $arrayFilters oprator use for select object of array and update that value 
+db.collection.update({
+    "name": "John Smith"
+},
+    {
+        $set: {
+            "friends.$[ele].name": "vijay",
+            "friends.$[ele].age": 31
+        }
+    },
+    {
+        "arrayFilters": [
+            {
+                "ele.age": 28
+            }
+        ]
+    });
+
+// $addToSet opratory use for if same value alrady exist that not add else add that value
+db.collection.update({
+    "name": "John Smith"
+},
+    {
+        $addToSet: {
+            "friends": {
+                "age": 30,
+                "name": "David12"
+            }
+        }
+    });
+
+db.collection.update({
+    "name": "John Smith"
+},
+    {
+        $addToSet: {
+            "hobbies": "swimming"
+        }
+    });
+
+// $pop oparator use for remove value from array if set value is 1 than remove last value, if -1 than remove first value
+db.collection.update({
+    "name": "John Smith"
+},
+    {
+        $pop: {
+            "hobbies": 1
+        }
+    });
+
+db.collection.update({
+    "name": "John Smith"
+},
+    {
+        $pop: {
+            "friends": 1
+        }
+    });
+
+// $push oparator use for push value in array
+db.collection.update({
+    "name": "John Smith"
+},
+    {
+        $push: {
+            "friends": {
+                name: "dev"
+            }
+        }
+    });
+
+// $ pull oparator use for pull value
+db.collection.update({
+    "name": "John Smith"
+},
+    {
+        $pull: {
+            "friends": {
+                name: "David"
+            },
+            "hobbies": "swimming"
+        }
+    });
+
+// $pullAll opratort use for remove all given value
+db.collection.update({
+    "name": "John Smith"
+},
+    {
+        $pullAll: {
+            "hobbies": [
+                "reading",
+                "painting"
+            ]
+        }
+    });
+
+// $each oprator use for add multiple value push in array
+db.collection.update({
+    "name": "John Smith"
+},
+    {
+        $addToSet: {
+            "hobbies": {
+                $each: [
+                    "anime",
+                    "coding"
+                ]
+            }
+        }
+    });
+
+db.collection.update({
+    "name": "John Smith"
+},
+    {
+        $addToSet: {
+            "friends": {
+                $each: [
+                    {
+                        "name": "Emily1",
+                        "age": 28
+                    },
+                    "coding"
+                ]
+            }
+        }
+    });
+
+// $position oprator use for add value in array particular position, this not work in $addToSet opratory
+db.collection.update({
+    "name": "John Smith"
+},
+    {
+        $push: {
+            "friends": {
+                $each: [
+                    {
+                        "name": "Emily1",
+                        "age": 28
+                    }
+                ],
+                $position: 0
+            }
+        }
+    });
+
+// $slice oprator  use for limit update array 
+db.collection.update({
+    "name": "John Smith"
+},
+    {
+        $push: {
+            "friends": {
+                $each: [
+                    {
+                        "name": "Emily1",
+                        "age": 28
+                    },
+                    {
+                        "name": "Emily2",
+                        "age": 28
+                    },
+                    {
+                        "name": "Emily3",
+                        "age": 28
+                    }
+                ],
+                $position: 0,
+                "$slice": 3
+            }
+        }
+    });
+
+// "$sort" oprator usr for sort array value but $posiion position oprator not work 
+db.collection.update({
+    "name": "John Smith"
+},
+    {
+        $push: {
+            "friends": {
+                $each: [
+                    {
+                        "name": "Emily1",
+                        "age": 31
+                    }
+                ],
+                $position: 0,
+                "$slice": 3,
+                "$sort": {
+                    age: 1
+                }
+            }
+        }
+    });
+
