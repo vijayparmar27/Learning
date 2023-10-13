@@ -324,7 +324,7 @@ db.collection.aggregate([
 ]);
 
 // "$bucket" use for grouping by condition [0,10,20] if groupBy "$age" than first group is 0-9 years old like wise group created
-db.collection.aggregate([ 
+db.collection.aggregate([
     {
         $match: {
             grade: "A"
@@ -355,3 +355,27 @@ db.collection.aggregate([
     }
 ])
 
+// $replaceRoot and $mergeObjects work only object
+db.collection.aggregate([
+    {
+        "$match": {
+            "age": 32
+        }
+    },
+    {
+        "$replaceRoot": {
+            "newRoot": {
+                "$mergeObjects": [
+                    {
+                        "city": "",
+                        "homeNo": 0,
+                        "state": "",
+                        "street": "",
+                        "zipcode": ""
+                    },
+                    "$address"
+                ]
+            }
+        }
+    }
+])
