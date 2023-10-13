@@ -323,6 +323,35 @@ db.collection.aggregate([
     },
 ]);
 
-
-
+// "$bucket" use for grouping by condition [0,10,20] if groupBy "$age" than first group is 0-9 years old like wise group created
+db.collection.aggregate([ 
+    {
+        $match: {
+            grade: "A"
+        }
+    },
+    {
+        "$bucket": {
+            "groupBy": "$age",
+            "boundaries": [
+                0,
+                19,
+                20
+            ],
+            "default": "older than 19 ",
+            "output": {
+                "count": {
+                    $sum: 1
+                },
+                details: {
+                    $push: {
+                        age: "$age",
+                        name: "$name",
+                        nOfC: "$number_of_courses"
+                    }
+                }
+            }
+        }
+    }
+])
 

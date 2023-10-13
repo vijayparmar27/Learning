@@ -1,0 +1,249 @@
+[
+    {
+        "_id": 1,
+        "name": "John Smith",
+        "country": "USA",
+        "contacts": [
+            {
+                "type": "email",
+                "value": "john@example.com"
+            },
+            {
+                "type": "phone",
+                "value": "555-1234"
+            }
+        ],
+        "addresses": [
+            {
+                "type": "home",
+                "street": "123 Main St",
+                "city": "New York"
+            },
+            {
+                "type": "work",
+                "street": "456 Business Rd",
+                "city": "Los Angeles"
+            }
+        ]
+    },
+    {
+        "_id": 2,
+        "name": "Alice Johnson",
+        "country": "USA",
+        "contacts": [
+            {
+                "type": "email",
+                "value": "alice@example.com"
+            },
+            {
+                "type": "phone",
+                "value": "555-5678"
+            }
+        ],
+        "addresses": [
+            {
+                "type": "home",
+                "street": "789 Elm St",
+                "city": "San Francisco"
+            }
+        ]
+    },
+    {
+        "_id": 3,
+        "name": "Bob Lee",
+        "country": "Canada",
+        "contacts": [
+            {
+                "type": "email",
+                "value": "bob@example.com"
+            },
+            {
+                "type": "phone",
+                "value": "555-9876"
+            }
+        ],
+        "addresses": [
+            {
+                "type": "home",
+                "street": "101 Oak Ave",
+                "city": "Toronto"
+            }
+        ]
+    },
+    {
+        "_id": 4,
+        "name": "Elsa Wong",
+        "country": "Canada",
+        "contacts": [
+            {
+                "type": "email",
+                "value": "elsa@example.com"
+            },
+            {
+                "type": "phone",
+                "value": "555-4321"
+            }
+        ],
+        "addresses": [
+            {
+                "type": "home",
+                "street": "456 Elm St",
+                "city": "Vancouver"
+            }
+        ]
+    },
+    {
+        "_id": 5,
+        "name": "Carlos Sanchez",
+        "country": "Mexico",
+        "contacts": [
+            {
+                "type": "email",
+                "value": "carlos@example.com"
+            },
+            {
+                "type": "phone",
+                "value": "555-8765"
+            }
+        ],
+        "addresses": [
+            {
+                "type": "home",
+                "street": "789 Calle Principal",
+                "city": "Mexico City"
+            }
+        ]
+    },
+    {
+        "_id": 6,
+        "name": "Sophie Brown",
+        "country": "USA",
+        "contacts": [
+            {
+                "type": "email",
+                "value": "sophie@example.com"
+            },
+            {
+                "type": "phone",
+                "value": "555-6789"
+            }
+        ],
+        "addresses": [
+            {
+                "type": "home",
+                "street": "567 Oak St",
+                "city": "Chicago"
+            }
+        ]
+    },
+    {
+        "_id": 7,
+        "name": "Hans Schmidt",
+        "country": "Germany",
+        "contacts": [
+            {
+                "type": "email",
+                "value": "hans@example.com"
+            },
+            {
+                "type": "phone",
+                "value": "555-2345"
+            }
+        ],
+        "addresses": [
+            {
+                "type": "home",
+                "street": "123 Hauptstraße",
+                "city": "Berlin"
+            }
+        ]
+    },
+    {
+        "_id": 8,
+        "name": "Mia Johnson",
+        "country": "USA",
+        "contacts": [
+            {
+                "type": "email",
+                "value": "mia@example.com"
+            },
+            {
+                "type": "phone",
+                "value": "555-7890"
+            }
+        ],
+        "addresses": [
+            {
+                "type": "home",
+                "street": "234 Elm St",
+                "city": "Los Angeles"
+            }
+        ]
+    },
+    {
+        "_id": 9,
+        "name": "Luis Rodriguez",
+        "country": "Mexico",
+        "contacts": [
+            {
+                "type": "email",
+                "value": "luis@example.com"
+            },
+            {
+                "type": "phone",
+                "value": "555-3210"
+            }
+        ],
+        "addresses": [
+            {
+                "type": "home",
+                "street": "456 Calle Principal",
+                "city": "Mexico City"
+            }
+        ]
+    },
+    {
+        "_id": 10,
+        "name": "Sophia Kim",
+        "country": "South Korea",
+        "contacts": [
+            {
+                "type": "email",
+                "value": "sophia@example.com"
+            },
+            {
+                "type": "phone",
+                "value": "555-5432"
+            }
+        ],
+        "addresses": [
+            {
+                "type": "home",
+                "street": "789 Maple St",
+                "city": "Seoul"
+            }
+        ]
+    },
+    {
+        "_id": 11,
+        "name": "Hiroshi Tanaka",
+        "country": "Japan",
+        "contacts": [
+            {
+                "type": "email",
+                "value": "hiroshi@example.com"
+            },
+            {
+                "type": "phone",
+                "value": "555-8765"
+            }
+        ],
+        "addresses": [
+            {
+                "type": "home",
+                "street": "456 Sakura St",
+                "city": "Tokyo"
+            }
+        ]
+    }
+]

@@ -1,0 +1,189 @@
+[
+    {
+        "_id": 301,
+        "product_id": 201,
+        "reviews": [
+            {
+                "user_id": 1,
+                "comment": "Great product!",
+                "rating": 5
+            },
+            {
+                "user_id": 2,
+                "comment": "Good features",
+                "rating": 4
+            }
+        ]
+    },
+    {
+        "_id": 302,
+        "product_id": 202,
+        "reviews": [
+            {
+                "user_id": 3,
+                "comment": "Good value",
+                "rating": 4
+            },
+            {
+                "user_id": 4,
+                "comment": "Needs improvement",
+                "rating": 3
+            }
+        ]
+    },
+    {
+        "_id": 303,
+        "product_id": 203,
+        "reviews": [
+            {
+                "user_id": 5,
+                "comment": "Comfortable",
+                "rating": 4
+            }
+        ]
+    },
+    {
+        "_id": 304,
+        "product_id": 204,
+        "reviews": [
+            {
+                "user_id": 6,
+                "comment": "Not great",
+                "rating": 2
+            },
+            {
+                "user_id": 7,
+                "comment": "Average",
+                "rating": 3
+            }
+        ]
+    },
+    {
+        "_id": 305,
+        "product_id": 205,
+        "reviews": [
+            {
+                "user_id": 8,
+                "comment": "Not satisfied",
+                "rating": 2
+            },
+            {
+                "user_id": 9,
+                "comment": "Needs improvement",
+                "rating": 3
+            }
+        ]
+    },
+    {
+        "_id": 306,
+        "product_id": 206,
+        "reviews": [
+            {
+                "user_id": 10,
+                "comment": "Fantastic!",
+                "rating": 5
+            },
+            {
+                "user_id": 11,
+                "comment": "Great for outdoor use",
+                "rating": 4
+            }
+        ]
+    },
+    {
+        "_id": 307,
+        "product_id": 207,
+        "reviews": [
+            {
+                "user_id": 1,
+                "comment": "Amazing for outdoor activities",
+                "rating": 5
+            },
+            {
+                "user_id": 3,
+                "comment": "Highly recommended",
+                "rating": 5
+            }
+        ]
+    },
+    {
+        "_id": 308,
+        "product_id": 208,
+        "reviews": [
+            {
+                "user_id":14,
+                "comment": "Comfortable and affordable",
+                "rating": 4
+            },
+            {
+                "user_id": 5,
+                "comment": "Good quality for the price",
+                "rating": 4
+            }
+        ]
+    },
+    {
+        "_id": 309,
+        "product_id": 209,
+        "reviews": [
+            {
+                "user_id": 6,
+                "comment": "Impressive sound quality",
+                "rating": 5
+            },
+            {
+                "user_id": 7,
+                "comment": "Durable and reliable",
+                "rating": 4
+            }
+        ]
+    },
+    {
+        "_id": 310,
+        "product_id": 210,
+        "reviews": [
+            {
+                "user_id": 8,
+                "comment": "Affordable and comfortable",
+                "rating": 4
+            },
+            {
+                "user_id": 9,
+                "comment": "Great for daily wear",
+                "rating": 5
+            }
+        ]
+    },
+    {
+        "_id": 311,
+        "product_id": 211,
+        "reviews": [
+            {
+                "user_id": 2,
+                "comment": "Excellent features",
+                "rating": 5
+            },
+            {
+                "user_id": 10,
+                "comment": "Great for outdoor activities",
+                "rating": 4
+            }
+        ]
+    },
+    {
+        "_id": 312,
+        "product_id": 212,
+        "reviews": [
+            {
+                "user_id": 2,
+                "comment": "Comfortable and stylish",
+                "rating": 4
+            },
+            {
+                "user_id": 3,
+                "comment": "Good quality fabric",
+                "rating": 5
+            }
+        ]
+    }
+]

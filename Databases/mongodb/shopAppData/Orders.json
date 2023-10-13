@@ -1,0 +1,190 @@
+[
+    {
+        "_id": 101,
+        "order_date": "2023-10-10",
+        "totalAmount": 100,
+        "customer_id": 1,
+        "items": [
+            {
+                "product_id": 201,
+                "quantity": 2
+            },
+            {
+                "product_id": 202,
+                "quantity": 1
+            }
+        ]
+    },
+    {
+        "_id": 102,
+        "order_date": "2023-10-11",
+        "totalAmount": 200,
+        "customer_id": 2,
+        "items": [
+            {
+                "product_id": 201,
+                "quantity": 3
+            },
+            {
+                "product_id": 203,
+                "quantity": 2
+            }
+        ]
+    },
+    {
+        "_id": 103,
+        "order_date": "2023-10-12",
+        "totalAmount": 150,
+        "customer_id": 2,
+        "items": [
+            {
+                "product_id": 202,
+                "quantity": 2
+            },
+            {
+                "product_id": 204,
+                "quantity": 3
+            }
+        ]
+    },
+    {
+        "_id": 104,
+        "order_date": "2023-10-13",
+        "totalAmount": 120,
+        "customer_id": 3,
+        "items": [
+            {
+                "product_id": 203,
+                "quantity": 3
+            },
+            {
+                "product_id": 201,
+                "quantity": 2
+            }
+        ]
+    },
+    {
+        "_id": 105,
+        "order_date": "2023-10-14",
+        "totalAmount": 80,
+        "customer_id": 4,
+        "items": [
+            {
+                "product_id": 204,
+                "quantity": 4
+            }
+        ]
+    },
+    {
+        "_id": 106,
+        "order_date": "2023-10-15",
+        "totalAmount": 220,
+        "customer_id": 5,
+        "items": [
+            {
+                "product_id": 201,
+                "quantity": 5
+            },
+            {
+                "product_id": 202,
+                "quantity": 3
+            }
+        ]
+    },
+    {
+        "_id": 107,
+        "order_date": "2023-10-16",
+        "totalAmount": 90,
+        "customer_id": 6,
+        "items": [
+            {
+                "product_id": 202,
+                "quantity": 2
+            },
+            {
+                "product_id": 203,
+                "quantity": 3
+            }
+        ]
+    },
+    {
+        "_id": 108,
+        "order_date": "2023-10-17",
+        "totalAmount": 130,
+        "customer_id": 7,
+        "items": [
+            {
+                "product_id": 205,
+                "quantity": 2
+            },
+            {
+                "product_id": 206,
+                "quantity": 1
+            }
+        ]
+    },
+    {
+        "_id": 109,
+        "order_date": "2023-10-18",
+        "totalAmount": 175,
+        "customer_id": 8,
+        "items": [
+            {
+                "product_id": 205,
+                "quantity": 3
+            },
+            {
+                "product_id": 206,
+                "quantity": 2
+            }
+        ]
+    },
+    {
+        "_id": 110,
+        "order_date": "2023-10-19",
+        "totalAmount": 95,
+        "customer_id": 9,
+        "items": [
+            {
+                "product_id": 207,
+                "quantity": 1
+            },
+            {
+                "product_id": 208,
+                "quantity": 4
+            }
+        ]
+    },
+    {
+        "_id": 111,
+        "order_date": "2023-10-20",
+        "totalAmount": 90,
+        "customer_id": 10,
+        "items": [
+            {
+                "product_id": 207,
+                "quantity": 2
+            },
+            {
+                "product_id": 208,
+                "quantity": 3
+            }
+        ]
+    },
+    {
+        "_id": 112,
+        "order_date": "2023-10-21",
+        "totalAmount": 135,
+        "customer_id": 11,
+        "items": [
+            {
+                "product_id": 209,
+                "quantity": 4
+            },
+            {
+                "product_id": 210,
+                "quantity": 2
+            }
+        ]
+    }
+]
