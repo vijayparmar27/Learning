@@ -85,4 +85,14 @@
 
         [ ] nest
 
-        [ ] 
+        [ ] patten design 
+
+        [ ] system design
+
+        [ ] url sortnar
+
+        [ ] fire base
+
+        [ ] grpc
+
+        [ ] connection pooling
