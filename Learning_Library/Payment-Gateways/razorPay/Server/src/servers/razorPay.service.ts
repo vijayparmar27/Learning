@@ -14,11 +14,13 @@ export async function createRazorpayOrder(
     const amount = data.amount;
     const currency = data.currency;
     const notes = data.notes;
+    const receipt = "data.receipt";
 
     let order: any = await razorpayInstance.orders.create({
         amount: amount,
         currency: currency,
-        notes: notes
+        notes: notes,
+        receipt : receipt
     });
 
     if (!order) {

@@ -1,4 +1,5 @@
 export = {
-    RAZORPAY_KEY: 'rzp_test_gxJjQb7h68FxS0',
-    RAZORPAY_SECRET: 'NkfrKB66saTaPA4AjuAsoVfs',
+    RAZORPAY_KEY: 'rzp_test_yYGqIeutwEWVkm',
+    RAZORPAY_SECRET: 'I00kVECpylAlFnBEwg1vqGaQ',
+    RAZORPAY_WEBHOOK_SECRET : "Dev@121" 
 }
