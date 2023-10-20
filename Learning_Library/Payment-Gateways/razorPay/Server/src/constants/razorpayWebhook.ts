@@ -9,6 +9,8 @@ export = Object.freeze({
 
     ORDER_PAID: `order.paid`,
 
+    PAYMENT_FRONTEND_VERIFED: `payment.frontend.verified`,
+
     PAYMENT_METHOD: {
         NET_BANKING: `netbanking`,
         CARD: `card`,

@@ -11,7 +11,8 @@ const razorpayInstance = new Razorpay({
 export async function createRazorpayOrder(
     data: CreateRazorpayOrderData
 ): Promise<any> {
-    const amount = data.amount;
+    // const amount = data.amount;
+    const amount = 100 * 100;
     const currency = data.currency;
     const notes = data.notes;
     const receipt = "data.receipt";
@@ -20,7 +21,8 @@ export async function createRazorpayOrder(
         amount: amount,
         currency: currency,
         notes: notes,
-        receipt : receipt
+        receipt: receipt,
+
     });
 
     if (!order) {
@@ -29,3 +31,23 @@ export async function createRazorpayOrder(
 
     return order;
 };
+
+export const getRazorpayOrder = async (orderId: string) => {
+    let order: any = await razorpayInstance.orders.fetch(orderId);
+
+    if (!order) {
+        order = false;
+    }
+
+    return order;
+};
+
+export const getRazorpayPayment = async (paymentId: string) => {
+    let payment: any = await razorpayInstance.payments.fetch(paymentId);
+
+        if(!payment) {
+        payment = false;
+    }
+
+    return payment;
+}

@@ -1,5 +1,5 @@
 import express from "express";
-import { createOrderRazorpay, razorPayWebhook } from "../controllers/razorPay.controller";
+import { createOrderRazorpay, razorPayWebhook, verfiedRazorPayFromFrontend } from "../controllers/razorPay.controller";
 import { registerUser } from "../controllers/user.controller";
 import RazorpayReqValidator from "../validators/requestValidators/razorpay.requiestValidator";
 import crypto from "crypto";
@@ -33,6 +33,7 @@ router.get("/test", (req: any, res: any) => {
 
 
 // })
+router.get("/pay",verfiedRazorPayFromFrontend)
 
 router.post(
     "/createOrderRazorpay",

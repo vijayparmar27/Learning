@@ -142,8 +142,16 @@ const paymentHistorySchema: Schema<razorpayPaymentHistoryModelIf> = new Schema({
         type: String,
         default: ""
     },
+    accountId: {
+        type: String,
+        default: ""
+    },
+    OrderdReceipt: {
+        type: String,
+        default: ""
+    },
 });
 
-const PaymentHistoryModel: Model<razorpayPaymentHistoryModelIf> = mongoose.model<razorpayPaymentHistoryModelIf>("paymentHistory", paymentHistorySchema)
+const PaymentHistoryModel: Model<razorpayPaymentHistoryModelIf> = mongoose.model<razorpayPaymentHistoryModelIf>("payment_histores", paymentHistorySchema)
 
 export default PaymentHistoryModel;

@@ -1,4 +1,5 @@
 export interface razorpayPaymentHistoryModelIf {
+    accountId: string;
     userId: string;
     paymentId: string;
     orderId: string;
@@ -37,9 +38,11 @@ export interface razorpayPaymentHistoryModelIf {
     fee: number;
     tax: number;
 
-    errorCode : string;
-    errorDescription : string;
-    errorSource : string;
-    errorStep : string;
-    errorReason : string;
+    errorCode: string;
+    errorDescription: string;
+    errorSource: string;
+    errorStep: string;
+    errorReason: string;
+
+    OrderdReceipt: string;
 }
