@@ -160,11 +160,11 @@ class LinkList {
 
         let currentNode = this.head.next
 
-        this.tail = this.head
-        this.tail.next = null;
+        // this.tail = this.head
+        // this.tail.next = null;
 
         let object = this.head;
-       
+
         while (currentNode) {
 
             const newNode = new Node(currentNode.value).nodeObj;
@@ -173,8 +173,11 @@ class LinkList {
             currentNode = currentNode.next;
 
         }
-        this.head = object;
-        console.log("---- this.tail :: ",this.tail)
+        console.log("---- this.object :: ", object)
+
+        // this.head = object;
+        console.log("---- this.head :: ", this.head)
+        console.log("---- this.tail :: ", this.tail)
 
     }
 
@@ -194,7 +197,7 @@ linkList.push(3)
 // linkList.getByIndex(0);
 linkList.reverse();
 linkList.push(4)
-linkList.prepend(4)
+linkList.prepend(10)
 
 linkList.get();
 
