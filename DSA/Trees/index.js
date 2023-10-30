@@ -62,24 +62,99 @@ class BinarySearchTree {
         return false;
     }
 
-    remove(){
-        
+    remove(value) {
+
+        let currentNode = this.root;
+        let parantNode = null;
+
+        if (!currentNode) {
+            return null;
+        }
+
+        while (currentNode) {
+
+            if (currentNode.value === value) {
+
+                console.log(`---------- currentNode :: `, currentNode);
+
+                if (currentNode.right === null) {
+
+                    if (!parantNode) {
+                        this.root = currentNode.left;
+                    } else {
+
+                        if (currentNode.value < parantNode.value) {
+                            parantNode.left = currentNode.left
+                        } else if (currentNode.value > parantNode.value) {
+                            parantNode.right = currentNode.left
+                        }
+                    }
+
+
+                } else if (currentNode.right.left === null) {
+                    if (!parantNode) {
+                        this.root = currentNode.right;
+                    } else {
+                        if (currentNode.value < parantNode.value) {
+                            parantNode.left = currentNode.right
+                        } else if (currentNode.value > parantNode.value) {
+                            parantNode.right = currentNode.right
+                        }
+                    }
+                } else {
+
+                    let leftCurrentNode = currentNode.right.left;
+                    let leftParantNode = currentNode.right;
+                    while (leftCurrentNode.left !== null) {
+
+                        leftParantNode = leftParantNode.left;
+                        leftCurrentNode = leftCurrentNode.left;
+                    }
+
+                    if (leftCurrentNode.right !== null) {
+                        leftParantNode.left = leftCurrentNode.right;
+                    } else {
+                        leftParantNode.left = null;
+                    }
+
+                    currentNode.value = leftCurrentNode.value;
+
+                }
+
+
+                break;
+
+            } else if (currentNode.value > value) {
+                currentNode = currentNode.left
+                parantNode = currentNode
+
+            } else if (currentNode.value < value) {
+                currentNode = currentNode.right
+                parantNode = currentNode
+            }
+        }
+
     }
 
+
+   
 
 }
 
 
 const binnary = new BinarySearchTree();
-binnary.insert(30);
+binnary.insert(5);
+binnary.insert(4);
+binnary.insert(10);
+binnary.insert(7);
 binnary.insert(20);
-binnary.insert(40);
-// binnary.insert(50);
-// binnary.insert(45);
-// binnary.insert(10);
-// binnary.insert(35);
-binnary.insert(40);
-binnary.insert(40);
+binnary.insert(15);
+binnary.insert(16);
+binnary.insert(30);
+binnary.insert(31);
+binnary.insert(29);
+
+
 console.log("-------->> binnary : ", JSON.stringify(binnary))
-const res = binnary.lookup(40);
-console.log("-------->> res : ", JSON.stringify(res))
+// const res = binnary.lookup(40);
+// console.log("-------->> res : ", JSON.stringify(res))
