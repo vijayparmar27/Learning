@@ -4,22 +4,13 @@ class Node {
         this.right = null;
         this.value = value;
         this.duplicateCount = 1;
-
-        // this.leftLength = null;
-        // this.rightLength = null;
     }
 }
 
 class AVLTree {
     constructor() {
         this.root = null;
-        this.leftNodeLength = 0;
-        this.rightNodeLength = 0;
     }
-    // let currentNode = this.root
-    // while () {
-
-    // }
 
     insert(value) {
         let currentNode = this.root
@@ -33,7 +24,6 @@ class AVLTree {
             if (currentNode.value < value) {
                 if (currentNode.right === null) {
                     currentNode.right = newNode;
-                    this.rightNodeLength++;
                     break;
                 }
                 currentNode = currentNode.right;
@@ -41,7 +31,6 @@ class AVLTree {
             } else if (currentNode.value > value) {
                 if (currentNode.left === null) {
                     currentNode.left = newNode;
-                    this.leftNodeLength++;
                     break;
                 }
                 currentNode = currentNode.left;
@@ -52,56 +41,67 @@ class AVLTree {
             }
         }
 
-        const data = this._lengthDiff(this.root);
-
-        if (data) {
-            // console.log(`----- data :: `, data)
-            console.dir(data, { depth: 10 });
-
-            const { side, node } = data
-            if (side < 0) {
-                // right weight
-                if (node.right.right === null && node.right.left) {
-                    const temp = node.right.left.value;
-                    // const newNode = new Node(node.right.value);
-                    // newNode.
-                    node.right.right = new Node(node.right.value);
-                    node.right.right.left = node.right.left.right
-                    node.right.value = temp;
-                    node.right.left = null;
-                    console.log(`--------`)
-                }
-                console.dir(data, { depth: 10 });
-
-                console.dir(data, { depth: 10 });
-                const temp = node.value
-
-                const newNode = new Node(temp);
-                newNode.left = node.left
-                newNode.right = node.right.left
-                node.right.left = null;
-
-                node.value = node.right.value;
-                node.right = node.right.right;
-                node.left = newNode;
-
-
-                console.dir(data, { depth: 10 });
-
-
-            } else {
-                // left weight
-            }
-
-        }
-
+        this._balanceTree();
 
     }
 
-    _checkLength(node) {
-        // console.log(`--------- node :: 1 ::`, node)
-        // console.dir(node, { depth: 10 });
+    _rightWeightTres(node) {
 
+        if (node && node?.right?.left?.right || node?.right?.left?.left) {
+
+            const newNode = new Node(node.right.value);
+            newNode.right = node.right.right
+            newNode.left = node.right.left.right ? node.right.left.right : null;
+
+            node.right.value = node.right.left.value;
+            node.right.left = node.right.left.left ? node.right.left.left : null;
+            node.right.right = newNode;
+        }
+
+        const newNode = new Node(node.value);
+        newNode.left = node.left;
+        newNode.right = node.right.left;
+
+        node.value = node.right.value;
+        node.left = newNode;
+        node.right = node.right.right
+
+    }
+
+    _leftWeightTres(node) {
+        if (node && node?.left?.right?.left || node?.left?.right?.right) {
+            const newNode = new Node(node.left.value);
+            newNode.left = node.left.left
+            newNode.right = node.left.right.left ? node.left.right.left : null
+
+            node.left.value = node.left.right.value;
+            node.left.right = node.left.right.right ? node.left.right.right : null;
+            node.left.left = newNode
+        }
+
+        const newNode = new Node(node.value);
+        newNode.right = node.right
+        newNode.left = node.left.right
+        node.value = node.left.value
+        node.right = newNode;
+        node.left = node.left.left;
+    }
+
+    _balanceTree() {
+        const data = this._unbalanceNode(this.root);
+
+        if (data && data.length > 0) {
+            const { side, node } = data[0]
+
+            if (side < 0) {
+                this._rightWeightTres(node);
+            } else {
+                this._leftWeightTres(node);
+            }
+        }
+    }
+
+    _checkLength(node) {
         if (node === null) {
             return 0;
         }
@@ -117,26 +117,29 @@ class AVLTree {
         return leftNode > rightNode ? leftNode : rightNode
     }
 
-    _lengthDiff(node) {
-        const left = this._checkLength(node && node.left ? node.left : null);
-        const right = this._checkLength(node && node.right ? node.right : null);
-
-        if (Math.abs(left - right) > 1) {
-
-            return { node, side: left - right };
-        }
+    _unbalanceNode(node) {
 
         let leftNode = node && node.left ? node.left : null;
         let rightNode = node && node.right ? node.right : null;
 
-        if (leftNode || rightNode) {
+        const left = this._checkLength(node && node.left ? node.left : null);
+        const right = this._checkLength(node && node.right ? node.right : null);
+
+        if (Math.abs(left - right) > 1) {
             if (leftNode) {
-                node = this._lengthDiff(leftNode);
+                leftNode = this._unbalanceNode(leftNode)
             }
             if (rightNode) {
-                node = this._lengthDiff(rightNode);
+                rightNode = this._unbalanceNode(rightNode)
             }
-            return node
+
+            leftNode = leftNode ? leftNode : []
+            rightNode = rightNode ? rightNode : []
+            return [...leftNode, ...rightNode, { node, side: left - right }];
+        }
+
+        if (!leftNode && !rightNode) {
+            return null;
         }
 
     }
@@ -147,24 +150,14 @@ class AVLTree {
 const avlTree = new AVLTree();
 
 
-// avlTree.insert(10);
-// avlTree.insert(5);
-// avlTree.insert(12);
-// avlTree.insert(11);
-// avlTree.insert(13);
-// avlTree.insert(14);
-// avlTree.insert(20);
-
-avlTree.insert(30);
-avlTree.insert(20);
-// avlTree.insert(21);
-// // avlTree.insert(10);
-// avlTree.insert(34);
 avlTree.insert(40);
-avlTree.insert(35);
-avlTree.insert(34);
-avlTree.insert(36);
-// avlTree.insert(45);
+avlTree.insert(50);
+avlTree.insert(60);
+// avlTree.insert(20);
+// avlTree.insert(35);
+// avlTree.insert(34);
+// avlTree.insert(25);
+// avlTree.insert(26);
 
 // const val = avlTree.lengthDiff(avlTree.root)
 // const val = avlTree.checkLength(avlTree.root)
