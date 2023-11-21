@@ -1,105 +1,84 @@
-const readline = require('readline');
+class Point {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
 
-let rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-const async = require('async');
-
-class HotDrink
-{
-  consume() {}
-}
-
-class Tea extends HotDrink
-{
-  consume() {
-    console.log('This tea is nice with lemon!');
+  toString() {
+    return `(${this.x}, ${this.y})`;
   }
 }
 
-class Coffee extends HotDrink
-{
-  consume()
-  {
-    console.log(`This coffee is delicious!`);
+class Line {
+  constructor(start, end) {
+    this.start = start;
+    this.end = end;
+  }
+
+  toString() {
+    return `${this.start.toString()}→${this.end.toString()}`;
   }
 }
 
-class HotDrinkFactory
-{
-  prepare(amount) { /* abstract */ }
-}
+class VectorObject extends Array { }
 
-class TeaFactory extends HotDrinkFactory
-{
-  prepare(amount) {
-    console.log(`Grind some beans, boil water, pour ${amount}ml`);
-    return new Coffee();
+class VectorRectangle extends VectorObject {
+  constructor(x, y, width, height) {
+    super();
+    this.push(new Line(new Point(x, y), new Point(x + width, y)));
+    this.push(new Line(new Point(x + width, y), new Point(x + width, y + height)));
+    this.push(new Line(new Point(x, y), new Point(x, y + height)));
+    this.push(new Line(new Point(x, y + height), new Point(x + width, y + height))); this.push
   }
 }
 
-class CoffeeFactory extends HotDrinkFactory
-{
-  prepare(amount) {
-    console.log(`Put in tea bag, boil water, pour ${amount}ml`);
-    return new Tea();
-  }
-}
+// ↑↑↑ this is your API ↑↑↑
 
-let AvailableDrink = Object.freeze({
-  coffee: CoffeeFactory,
-  tea: TeaFactory
-});
+// ↓↓↓ this is what you have to work with ↓↓↓
 
-class HotDrinkMachine
-{
-  constructor()
-  {
-    this.factories = {};
-    for (let drink in AvailableDrink)
-    {
-      this.factories[drink] = new AvailableDrink[drink]();
+let vectorObjects = [
+  new VectorRectangle(1, 1, 10, 10),
+  new VectorRectangle(3, 3, 6, 6)
+];
+
+let drawPoint = function (point) {
+  process.stdout.write('.');
+};
+
+// ↓↓↓ to draw our vector objects, we need an adapter ↓↓↓
+
+class LineToPointAdapter extends Array {
+  constructor(line) {
+    super();
+    console.log(`${LineToPointAdapter.count++}: Generating ` +
+      `points for line ${line.toString()} (no caching)`);
+
+    let left = Math.min(line.start.x, line.end.x);
+    let right = Math.max(line.start.x, line.end.x);
+    let top = Math.min(line.start.y, line.end.y);
+    let bottom = Math.max(line.start.y, line.end.y);
+
+    if (right - left === 0) {
+      for (let y = top; y <= bottom; ++y) {
+        this.push(new Point(left, y));
+      }
+    }
+    else if (line.end.y - line.start.y === 0) {
+      for (let x = left; x <= right; ++x) {
+        this.push(new Point(x, top));
+      }
     }
   }
-
-  makeDrink(type)
-  {
-    switch (type)
-    {
-      case 'tea':
-        return new TeaFactory().prepare(200);
-      case 'coffee':
-        return new CoffeeFactory().prepare(50);
-      default:
-        throw new Error(`Don't know how to make ${type}`);
-    }
-  }
-
-  interact(consumer)
-  {
-    rl.question('Please specify drink and amount ' +
-      '(e.g., tea 50): ', answer => {
-      let parts = answer.split(' ');
-      let name = parts[0];
-      let amount = parseInt(parts[1]);
-      let d = this.factories[name].prepare(amount);
-      rl.close();
-      consumer(d);
-    });
-  }
 }
+LineToPointAdapter.count = 0;
 
-let machine = new HotDrinkMachine();
-// rl.question('which drink? ', function(answer)
-// {
-//   let drink = machine.makeDrink(answer);
-//   drink.consume();
-//
-//   rl.close();
-// });
-machine.interact(
-  function (drink) {
-    drink.consume();
-  }
-);
+let drawPoints = function () {
+  for (let vo of vectorObjects)
+    for (let line of vo) {
+      let adapter = new LineToPointAdapter(line);
+      adapter.forEach(drawPoint);
+    }
+};
+
+drawPoints();
+drawPoints();

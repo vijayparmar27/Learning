@@ -1,3 +1,7 @@
+/**
+ * Factory Design Pattern deals with creating individual objects, while the Abstract Factory Design Pattern deals with creating families of related or dependent objects.
+ */
+
 // Shape interface
 interface Shape {
     draw(): void;

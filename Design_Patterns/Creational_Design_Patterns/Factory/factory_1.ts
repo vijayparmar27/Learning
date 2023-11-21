@@ -1,3 +1,7 @@
+/**
+ * The Factory Design Pattern is a creational pattern that provides an interface for creating objects in a superclass but allows subclasses to alter the type of objects that will be created
+ */
+
 // Product interface representing the objects the factory creates
 interface Product {
     operation(): string;
