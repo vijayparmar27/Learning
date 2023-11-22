@@ -6,9 +6,9 @@ class Event {
 
     subscribe(handler) {
         console.log(`----- Event :: subscribe :: handler :: `, handler)
-        
+
         this.handlers.set(++this.count, handler);
-        console.log(`----- Event :: subscribe :: this.handlers :: `, this.handlers)
+        // console.log(`----- Event :: subscribe :: this.handlers :: `, this.handlers)
         // console.log(`----- Event :: subscribe :: handler.func1 :: `,handler())
         return this.count;
     }
@@ -20,9 +20,9 @@ class Event {
     fire(sender, args) {
         console.log(`----- Event :: fire :: sender :: `, sender)
         console.log(`----- Event :: fire :: args :: `, args)
-        // console.log(`----- Event :: this.handlers :: `, this.handlers)
+        console.log(`----- Event :: this.handlers :: `, this.handlers)
         this.handlers.forEach(function (v, k) {
-            console.log(`----- Event :: this.handlers :: v : `,v)
+            console.log(`----- Event :: this.handlers :: v : `, v)
             v(sender, args);
         });
     }
@@ -62,10 +62,6 @@ class Creature {
         this.initial_defense = defense;
     }
 
-    func() {
-        return true;
-    }
-
     get attack() {
         console.log(`----- Creature :: attack :: `)
 
@@ -85,8 +81,8 @@ class Creature {
     }
 
     toString() {
-        // return `${this.name}: (${this.attack}/${this.defense})`;
-        return `${this.name}: (${this.attack}/0)`;
+        return `${this.name}: (${this.attack}/${this.defense})`;
+        // return `${this.name}: (${this.attack}/0)`;
     }
 }
 
@@ -95,8 +91,7 @@ class CreatureModifier {
         this.game = game;
         this.creature = creature;
         this.token = game.queries.subscribe(
-            // this.handle.bind(this)
-            this.handle
+            this.handle.bind(this)
         );
     }
 
@@ -106,12 +101,13 @@ class CreatureModifier {
         // implement in inheritors
     }
 
-    func1(){
+    func1() {
         console.log(`======`)
     }
 
     dispose() {
         console.log(`----- CreatureModifier :: dispose :: `)
+        console.log(`----- CreatureModifier :: this.token :: `,this.token)
 
         game.queries.unsubscribe(this.token);
     }
@@ -122,18 +118,14 @@ class DoubleAttackModifier extends CreatureModifier {
         super(game, creature);
     }
 
-    handle1(sender, query){
-
-        console.log(`----- DoubleAttackModifier :: handle1 :: sender :: `, sender)
-    }
-
     handle(sender, query) {
         console.log(`-------==========`)
-        console.log(`----- DoubleAttackModifier :: handle :: sender :: `, sender)
-        console.log(`----- DoubleAttackModifier :: handle :: query :: `, query)
+
 
         if (query.creatureName === this.creature.name &&
             query.whatToQuery === WhatToQuery.attack) {
+            console.log(`----- DoubleAttackModifier :: handle :: sender :: `, sender)
+            console.log(`----- DoubleAttackModifier :: handle :: query :: `, query)
             query.value *= 2;
         }
     }
@@ -163,11 +155,12 @@ console.log(goblin.toString());
 console.log(`-------------------------------------------`)
 console.log(`-------------------------------------------`)
 let dam = new DoubleAttackModifier(game, goblin);
+let dam1 = new DoubleAttackModifier(game, goblin);
 console.log(goblin.toString());
 
-// let idm = new IncreaseDefenseModifier(game, goblin);
-// console.log(goblin.toString());
-// idm.dispose();
+let idm = new IncreaseDefenseModifier(game, goblin);
+console.log(goblin.toString());
+idm.dispose();
 
 // dam.dispose();
-// console.log(goblin.toString());
+console.log(goblin.toString());
