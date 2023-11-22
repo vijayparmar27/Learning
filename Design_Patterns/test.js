@@ -1,84 +1,129 @@
-class Point {
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
-  }
+// class Event {
+//     constructor() {
+//         this.handlers = new Map();
+//         this.count = 0;
+//     }
 
-  toString() {
-    return `(${this.x}, ${this.y})`;
-  }
-}
+//     subscribe(handler) {
+//         this.handlers.set(++this.count, handler);
+//         return this.count;
+//     }
 
-class Line {
-  constructor(start, end) {
-    this.start = start;
-    this.end = end;
-  }
+//     unsubscribe(idx) {
+//         this.handlers.delete(idx);
+//     }
 
-  toString() {
-    return `${this.start.toString()}→${this.end.toString()}`;
-  }
-}
+//     fire(sender, args) {
+//         this.handlers.forEach(function (v, k) {
+//             v(sender, args);
+//         });
+//     }
+// }
 
-class VectorObject extends Array { }
+// let WhatToQuery = Object.freeze({
+//     'attack': 1,
+//     'defense': 2
+// });
 
-class VectorRectangle extends VectorObject {
-  constructor(x, y, width, height) {
-    super();
-    this.push(new Line(new Point(x, y), new Point(x + width, y)));
-    this.push(new Line(new Point(x + width, y), new Point(x + width, y + height)));
-    this.push(new Line(new Point(x, y), new Point(x, y + height)));
-    this.push(new Line(new Point(x, y + height), new Point(x + width, y + height))); this.push
-  }
-}
+// class Query {
+//     constructor(creatureName, whatToQuery, value) {
+//         this.creatureName = creatureName;
+//         this.whatToQuery = whatToQuery;
+//         this.value = value;
+//     }
+// }
 
-// ↑↑↑ this is your API ↑↑↑
+// class Game {
+//     constructor() {
+//         this.queries = new Event();
+//     }
 
-// ↓↓↓ this is what you have to work with ↓↓↓
+//     performQuery(sender, query) {
+//         this.queries.fire(sender, query);
+//     }
+// }
 
-let vectorObjects = [
-  new VectorRectangle(1, 1, 10, 10),
-  new VectorRectangle(3, 3, 6, 6)
-];
+// class Creature {
+//     constructor(game, name, attack, defense) {
+//         this.game = game;
+//         this.name = name;
+//         this.initial_attack = attack;
+//         this.initial_defense = defense;
+//     }
 
-let drawPoint = function (point) {
-  process.stdout.write('.');
-};
+//     get attack() {
+//         let q = new Query(this.name, WhatToQuery.attack,
+//             this.initial_attack);
+//         this.game.performQuery(this, q);
+//         return q.value;
+//     }
 
-// ↓↓↓ to draw our vector objects, we need an adapter ↓↓↓
+//     get defense() {
+//         let q = new Query(this.name, WhatToQuery.defense,
+//             this.initial_defense);
+//         this.game.performQuery(this, q);
+//         return q.value;
+//     }
 
-class LineToPointAdapter extends Array {
-  constructor(line) {
-    super();
-    console.log(`${LineToPointAdapter.count++}: Generating ` +
-      `points for line ${line.toString()} (no caching)`);
+//     toString() {
+//         return `${this.name}: (${this.attack}/${this.defense})`;
+//     }
+// }
 
-    let left = Math.min(line.start.x, line.end.x);
-    let right = Math.max(line.start.x, line.end.x);
-    let top = Math.min(line.start.y, line.end.y);
-    let bottom = Math.max(line.start.y, line.end.y);
+// class CreatureModifier {
+//     constructor(game, creature) {
+//         this.game = game;
+//         this.creature = creature;
+//         this.token = game.queries.subscribe(
+//             this.handle.bind(this)
+//         );
+//     }
 
-    if (right - left === 0) {
-      for (let y = top; y <= bottom; ++y) {
-        this.push(new Point(left, y));
-      }
-    }
-    else if (line.end.y - line.start.y === 0) {
-      for (let x = left; x <= right; ++x) {
-        this.push(new Point(x, top));
-      }
-    }
-  }
-}
-LineToPointAdapter.count = 0;
+//     handle(sender, query) {
+//         // implement in inheritors
+//     }
 
-let drawPoints = function () {
-  for (let vo of vectorObjects)
-    for (let line of vo) {
-      let adapter = new LineToPointAdapter(line);
-      adapter.forEach(drawPoint);
-    }
-};
+//     dispose() {
+//         game.queries.unsubscribe(this.token);
+//     }
+// }
 
-drawPoints();
-drawPoints();
+// class DoubleAttackModifier extends CreatureModifier {
+//     constructor(game, creature) {
+//         super(game, creature);
+//     }
+
+//     handle(sender, query) {
+//         if (query.creatureName === this.creature.name &&
+//             query.whatToQuery === WhatToQuery.attack) {
+//             query.value *= 2;
+//         }
+//     }
+// }
+
+// class IncreaseDefenseModifier extends CreatureModifier {
+//     constructor(game, creature) {
+//         super(game, creature);
+//     }
+
+//     handle(sender, query) {
+//         if (query.creatureName === this.creature.name &&
+//             query.whatToQuery === WhatToQuery.defense) {
+//             query.value += 2;
+//         }
+//     }
+// }
+
+// let game = new Game();
+// let goblin = new Creature(game, 'Strong Goblin', 2, 2);
+// console.log(goblin.toString());
+
+// let dam = new DoubleAttackModifier(game, goblin);
+// console.log(goblin.toString());
+
+// let idm = new IncreaseDefenseModifier(game, goblin);
+// console.log(goblin.toString());
+// idm.dispose();
+
+// dam.dispose();
+// console.log(goblin.toString());
