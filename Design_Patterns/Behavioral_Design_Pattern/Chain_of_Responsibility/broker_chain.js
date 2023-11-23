@@ -17,11 +17,11 @@ class Event {
         this.handlers.delete(idx);
     }
 
-    fire(sender, args) {
+    fire(sender, args) { 
         console.log(`----- Event :: fire :: sender :: `, sender)
         console.log(`----- Event :: fire :: args :: `, args)
         console.log(`----- Event :: this.handlers :: `, this.handlers)
-        this.handlers.forEach(function (v, k) {
+        this.handlers.forEach(function (v, k) {   // this design pattern
             console.log(`----- Event :: this.handlers :: v : `, v)
             v(sender, args);
         });

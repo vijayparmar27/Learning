@@ -32,7 +32,7 @@ class CreatureModifier {
 
         if (this.next) {
             // console.log(`--- CreatureModifier :: handle : 2 `, this.next);
-            this.next.handle();
+            this.next.handle(); // this design pattern
             // console.log(`--- CreatureModifier :: handle : 3 `, this.next);
         }
     }

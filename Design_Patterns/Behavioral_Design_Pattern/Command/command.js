@@ -41,7 +41,7 @@ class BankAccountCommand {
     }
 
     call() {
-        switch (this.action) {
+        switch (this.action) {    // this design pattern
             case Action.deposit:
                 this.account.deposit(this.amount);
                 this.succeeded = true;
