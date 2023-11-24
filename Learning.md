@@ -96,3 +96,5 @@
         [ ] grpc
 
         [ ] connection pooling
+
+        [ ] Amazon GameLift

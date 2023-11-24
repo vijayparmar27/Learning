@@ -36,4 +36,12 @@
 
 - Strategy
 
-    - 
+  - The strategy design pattern is a behavioral design pattern that allows an object to dynamically change its behavior.
+
+- Template Method
+
+  - The Template Method Design Pattern is a behavioral design pattern that defines an algorithm's skeleton in a base class
+
+- Visitor
+
+  - The visitor design pattern is a behavioral design pattern that separates an algorithm from the object structure it operates on. The logic is moved to separate classes called visitors.
