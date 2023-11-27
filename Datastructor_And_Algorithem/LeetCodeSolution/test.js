@@ -13,21 +13,30 @@
 // console.log(`--- map :: `, map);
 // console.log(`--- map :: `, map.clear());
 
-// const set = new Set(["1","2"]);
+// const set = new Set(["1", "2", "3", "4", "5", "6", "7", "8", "9"]);
 
-// set.add("1")
-// set.add("1")
-// set.add("2");
+// // set.add("1")
+// // set.add("1")
+// // set.add("2");
 
 
 // console.log(`--- set :: `, set);
+// console.log(`--- set :: `, set.size);
+
+// console.log(`--- set :: `, set);
+
 // console.log(`--- set :: `, set.has("1"));
 // console.log(`--- set :: `, );
 // console.log(`--- set :: `, [...set][0]);
 
 
-const a = []
-let b = 0
-a[0] = b ? b : "123"
+const string = "dvdf";
 
-console.log(`-- a :: `,a)
+let a = string
+console.log(`-------- string :: `, string);
+// console.log(`-------- string :: `, string.at(1));
+// console.log(`-------- string :: `, string.charAt(1));
+console.log(`-------- string :: `, string.indexOf("v"));
+console.log(`-------- string :: `, string.slice(0, 1));
+console.log(`-------- string :: `, a);
+console.log(`-------- string :: `, string);
