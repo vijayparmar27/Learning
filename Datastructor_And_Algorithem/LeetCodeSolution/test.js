@@ -30,13 +30,16 @@
 // console.log(`--- set :: `, [...set][0]);
 
 
-const string = "dvdf";
+const string = "dvdfqqd";
 
-let a = string
+// let a = string
+// console.log(`-------- string :: `, string);
+// // console.log(`-------- string :: `, string.at(1));
+// // console.log(`-------- string :: `, string.charAt(1));
+// console.log(`-------- string :: `, string.indexOf("v"));
+// console.log(`-------- string :: `, string.slice(0, 1));
+// console.log(`-------- string :: `, a);
 console.log(`-------- string :: `, string);
-// console.log(`-------- string :: `, string.at(1));
-// console.log(`-------- string :: `, string.charAt(1));
-console.log(`-------- string :: `, string.indexOf("v"));
-console.log(`-------- string :: `, string.slice(0, 1));
-console.log(`-------- string :: `, a);
-console.log(`-------- string :: `, string);
+console.log(`-------- string :: `, string.split("d"));
+console.log(`-------- string :: `, string.split("d"));
+
