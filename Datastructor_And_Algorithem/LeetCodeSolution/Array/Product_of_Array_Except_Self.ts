@@ -148,6 +148,6 @@ function productExceptSelf(nums: number[]): number[] {
   return products;
 }
 
-// console.log(productExceptSelf([1, 2, 3, 4]));
+console.log(productExceptSelf([1, 2, 3, 4]));
 // console.log(productExceptSelf([-1, 1, 0, -3, 3]));
 // console.log(productExceptSelf([-2, 4, 0, 2]))
