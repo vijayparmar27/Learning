@@ -98,3 +98,17 @@
         [ ] connection pooling
 
         [ ] Amazon GameLift
+
+        [ ] MONGODN SESSION
+
+    [ ] FRONT END
+
+        [ ] REACT.JS
+
+        [ ] ANGULAR
+
+        [ ] HTML/CSS
+
+        [ ] TAILWIND
+
+        [ ] BOOTSTRAP
